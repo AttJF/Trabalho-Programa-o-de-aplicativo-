@@ -1,1 +1,2 @@
-"# Trabalho-Programa-o-de-aplicativo-" 
+## Trabalho Programação de Aplicativos
+Grupo: Danilo, João Francisco, Gabriel Stawny
