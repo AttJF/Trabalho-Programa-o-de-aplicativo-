@@ -3,15 +3,15 @@ package entities;
 public class Consulta {
 	private int id; 
 	private Medico medico;
-	private int Horario;
+	private int dia, horario;
 	private Paciente paciente;
 	private boolean pago;
 	
-	public Consulta(int id, Medico medico, int horario, Paciente paciente, boolean pago) {
+	public Consulta(int id, Medico medico, int dia, int horario, Paciente paciente, boolean pago) {
 		super();
 		this.id = id;
 		this.medico = medico;
-		Horario = horario;
+		this.horario = horario;
 		this.paciente = paciente;
 		this.pago = pago;
 	}
@@ -43,10 +43,10 @@ public class Consulta {
 		this.medico = medico;
 	}
 	public int getHorario() {
-		return Horario;
+		return horario;
 	}
 	public void setHorario(int horario) {
-		Horario = horario;
+		this.horario = horario;
 	}
 	public Paciente getPaciente() {
 		return paciente;
