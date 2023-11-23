@@ -8,7 +8,7 @@ public class Paciente {
 	// foto
 	
 	public Paciente(int ID, String nome, String dataNascimento, String sexo, String telefone, FormaDePagamento formaPagamento, Endereco endereco) {
-		this.ID = iD;
+		this.ID = ID;
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;
 		this.sexo = sexo;
@@ -57,11 +57,11 @@ public class Paciente {
 		this.telefone = telefone;
 	}
 
-	public String getFormaPagamento() {
+	public FormaDePagamento getFormaPagamento() {
 		return formaPagamento;
 	}
 
-	public void setFormaPagamento(String formaPagamento) {
+	public void setFormaPagamento(FormaDePagamento formaPagamento) {
 		this.formaPagamento = formaPagamento;
 	}
 

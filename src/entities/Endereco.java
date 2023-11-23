@@ -1,6 +1,6 @@
 package entities;
 
-public class Endereço {
+public class Endereco {
 	
 	private int id;
 	private String rua;
@@ -10,7 +10,7 @@ public class Endereço {
 	private int numero;
 	private String uniãoFederativa;
 	
-	public Endereço(int id, String rua, String bairro, String cidade, String complemento, int numero,
+	public Endereco(int id, String rua, String bairro, String cidade, String complemento, int numero,
 			String uniãoFederativa) {
 		super();
 		this.id = id;
