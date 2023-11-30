@@ -8,4 +8,4 @@ CREATE TABLE `clinica`.`exame` (`IDexame` INT NOT NULL AUTO_INCREMENT , `nome` V
 
 CREATE TABLE `clinica`.`endereco` (`IDendereco` INT NOT NULL AUTO_INCREMENT , `rua` VARCHAR(50) NOT NULL , `bairro` VARCHAR(50) NOT NULL , `cidade` VARCHAR(50) NOT NULL , `complemento` VARCHAR(100) NOT NULL , `numero` INT NOT NULL , `uniaofederativa` VARCHAR(2) NOT NULL , PRIMARY KEY (`IDendereco`)) ENGINE = InnoDB;
 
-CREATE TABLE `clinica`.`pedidoexame` (`IDpedidoexame` INT NOT NULL AUTO_INCREMENT, `datarealizacao` varchar(50) NOT NULL, `valopago` DOUBLE NOT NULL, `IDmedico` INT NOT NULL, `IDpaciente` INT NOT NULL, `IDexame` INT NOT NULL, PRIMARY KEY (`IDpedidoexame`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `clinica`.`pedidoexame` (`IDpedidoexame` INT NOT NULL AUTO_INCREMENT, `datarealizacao` varchar(50) NOT NULL, `valorpago` DOUBLE NOT NULL, `IDmedico` INT NOT NULL, `IDpaciente` INT NOT NULL, `IDexame` INT NOT NULL, PRIMARY KEY (`IDpedidoexame`)) ENGINE=InnoDB;

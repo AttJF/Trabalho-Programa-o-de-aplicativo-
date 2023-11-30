@@ -1,13 +1,13 @@
 package entities;
 
 public class Medico {
-	private int ID, CRM;
+	private int id, CRM;
 	private String telefone, nome;
 	private Endereco endereco;
 	private Especialidade especialidade;
 
-	public Medico(int ID, int CRM, String telefone, String nome, Endereco endereco, Especialidade especialidade) {
-		this.ID = ID;
+	public Medico(int id, int CRM, String telefone, String nome, Endereco endereco, Especialidade especialidade) {
+		this.id = id;
 		this.CRM = CRM;
 		this.telefone = telefone;
 		this.nome = nome;
@@ -15,14 +15,15 @@ public class Medico {
 		this.especialidade = especialidade;
 	}
 
+	public Medico() { }
 
-	public int getID() {
-		return ID;
+	public int getId() {
+		return id;
 	}
 
 
-	public void setID(int iD) {
-		ID = iD;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 
@@ -78,7 +79,7 @@ public class Medico {
 
 	@Override
 	public String toString() {
-		return "Medico [ID=" + ID + ", CRM=" + CRM + ", telefone=" + telefone + ", nome=" + nome + ", especialidade="
+		return "Medico [ID=" + id + ", CRM=" + CRM + ", telefone=" + telefone + ", nome=" + nome + ", especialidade="
 				+ especialidade + "]";
 	}
 }

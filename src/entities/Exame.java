@@ -13,7 +13,9 @@ public class Exame {
 		this.custoExame = custoExame;
 		this.orientacoes = orientacoes;
 	}
-
+	
+	public Exame() { }
+	
 	public int getIdExame() {
 		return idExame;
 	}

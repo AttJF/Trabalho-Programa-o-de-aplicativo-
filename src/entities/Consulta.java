@@ -14,12 +14,17 @@ public class Consulta {
 		this.horario = horario;
 		this.paciente = paciente;
 		this.pago = pago;
+		this.dia = dia;
 	}
+	
+	public Consulta() { }
+	
 	private void pagar(int valor, String forma) {
 		if(this.pago) {
 			System.out.println("pagamento ja realizado");
 		}
 	}
+	
 	private void remarcar(int novo) {
 		if(novo==1) {
 		this.setHorario(novo);
@@ -30,6 +35,7 @@ public class Consulta {
 	private void buscar() {
 		
 	}
+	
 	public int getId() {
 		return id;
 	}
@@ -60,4 +66,11 @@ public class Consulta {
 	public void setPago(boolean pago) {
 		this.pago = pago;
 	}
+	public int getDia() {
+		return dia;
+	}
+	public void setDia(int dia) {
+		this.dia = dia;
+	}
+	
 }

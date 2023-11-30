@@ -1,14 +1,14 @@
 package entities;
 
 public class Paciente {
-	private int ID;
+	private int id;
 	private String nome, dataNascimento, sexo, telefone;
 	private FormaDePagamento formaPagamento;
 	private Endereco endereco;
 	// foto
 	
-	public Paciente(int ID, String nome, String dataNascimento, String sexo, String telefone, FormaDePagamento formaPagamento, Endereco endereco) {
-		this.ID = ID;
+	public Paciente(int id, String nome, String dataNascimento, String sexo, String telefone, FormaDePagamento formaPagamento, Endereco endereco) {
+		this.id = id;
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;
 		this.sexo = sexo;
@@ -16,13 +16,15 @@ public class Paciente {
 		this.formaPagamento = formaPagamento;
 		this.endereco = endereco;
 	}
-
-	public int getID() {
-		return ID;
+	
+	public Paciente() { }
+	
+	public int getId() {
+		return id;
 	}
 
-	public void setID(int iD) {
-		ID = iD;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -75,7 +77,7 @@ public class Paciente {
 
 	@Override
 	public String toString() {
-		return "Paciente [ID=" + ID + ", nome=" + nome + ", dataNascimento=" + dataNascimento + ", sexo=" + sexo
+		return "Paciente [ID=" + id + ", nome=" + nome + ", dataNascimento=" + dataNascimento + ", sexo=" + sexo
 				+ ", telefone=" + telefone + ", formaPagamento=" + formaPagamento + "]";
 	}
 }
