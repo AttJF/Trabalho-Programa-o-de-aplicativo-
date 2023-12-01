@@ -7,12 +7,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import entities.FormaDePagamento;
 import entities.Medico;
-import entities.Paciente;
 
 public class MedicoDAO {
-	Connection conn;
+	
+	private Connection conn;
 	
 	public MedicoDAO(Connection conn) {
 		this.conn = conn;
@@ -27,12 +26,13 @@ public class MedicoDAO {
 			ps.setInt(1, medico.getCRM());
 			ps.setString(2, medico.getNome());
 			ps.setString(3, medico.getTelefone());
-			ps.setString(4, medico.getEspecialidade().getEspecialidade());
+			ps.setString(4, medico.getEspecialidade().getNomeEspecialidade());
 			ps.setInt(5, medico.getEndereco().getId());
 
 			ps.executeUpdate();
 		} finally {
 			BancoDados.finalizarStatement(ps);
+			BancoDados.desconectar();
 		}
 	}
 	
@@ -44,26 +44,29 @@ public class MedicoDAO {
 			ps.setInt(1, medico.getCRM());
 			ps.setString(2, medico.getNome());
 			ps.setString(3, medico.getTelefone());
-			ps.setString(4, medico.getEspecialidade().getEspecialidade());
+			ps.setString(4, medico.getEspecialidade().getNomeEspecialidade());
 			ps.setInt(5, medico.getEndereco().getId());
 			ps.setInt(6, medico.getId());
 
 			ps.executeUpdate();
 		} finally {
 			BancoDados.finalizarStatement(ps);
+			BancoDados.desconectar();
 		}
 	}
 	
-	public void excluir(int id) throws SQLException { 
+	public int excluir(int id) throws SQLException { 
 		PreparedStatement ps = null;
 
 		try {
 			ps = conn.prepareStatement("delete from medico where IDmedico = ?");
 			ps.setInt(1, id);
-			ps.executeUpdate();
+			int linhasManipuladas = ps.executeUpdate();
+			return linhasManipuladas;
 
 		} finally {
 			BancoDados.finalizarStatement(ps);
+			BancoDados.desconectar();
 		}
 	}
 	
@@ -82,7 +85,6 @@ public class MedicoDAO {
 				medico.setId(rs.getInt("IDmedico"));
 				medico.setNome(rs.getString("nome"));
 				medico.setCRM(rs.getInt("crm"));
-				// TODO
 				medico.setEspecialidade(null);
 				medico.setTelefone(rs.getString("telefone"));
 				medico.setEndereco(enderecoDao.buscarPorId(rs.getInt("IDendereco")));
@@ -95,6 +97,7 @@ public class MedicoDAO {
 
 			BancoDados.finalizarStatement(st);
 			BancoDados.finalizarResultSet(rs);
+			BancoDados.desconectar();
 		}
 	}
 	
@@ -115,7 +118,6 @@ public class MedicoDAO {
 				medico.setId(rs.getInt("IDmedico"));
 				medico.setNome(rs.getString("nome"));
 				medico.setCRM(rs.getInt("crm"));
-				// TODO
 				medico.setEspecialidade(null);
 				medico.setTelefone(rs.getString("telefone"));
 				medico.setEndereco(enderecoDao.buscarPorId(rs.getInt("IDendereco")));
@@ -127,6 +129,7 @@ public class MedicoDAO {
 		} finally {
 			BancoDados.finalizarStatement(ps);
 			BancoDados.finalizarResultSet(rs);
+			BancoDados.desconectar();
 		}
 	}
 	
@@ -146,7 +149,6 @@ public class MedicoDAO {
 				medico.setId(rs.getInt("IDmedico"));
 				medico.setNome(rs.getString("nome"));
 				medico.setCRM(rs.getInt("crm"));
-				// TODO
 				medico.setEspecialidade(null);
 				medico.setTelefone(rs.getString("telefone"));
 				medico.setEndereco(enderecoDao.buscarPorId(rs.getInt("IDendereco")));
@@ -158,6 +160,7 @@ public class MedicoDAO {
 		} finally {
 			BancoDados.finalizarStatement(ps);
 			BancoDados.finalizarResultSet(rs);
+			BancoDados.desconectar();
 		}
 	}
 }

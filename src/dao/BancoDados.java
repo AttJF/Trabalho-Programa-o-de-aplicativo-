@@ -11,7 +11,7 @@ import java.util.Properties;
 
 public class BancoDados {
 
-private static Connection conn = null;
+	private static Connection conn = null;
 	
 	public static Connection conectar() throws SQLException, IOException {
 		if(conn == null) {

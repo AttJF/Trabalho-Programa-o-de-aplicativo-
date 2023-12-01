@@ -8,13 +8,10 @@ import java.sql.SQLException;
 import entities.Consulta;
 
 public class ConsultaDAO {
-	Connection conn;
 	
-	public Connection getConn() {
-		return conn;
-	}
-
-	public void setConn(Connection conn) {
+	private Connection conn;
+	
+	public ConsultaDAO(Connection conn) {
 		this.conn = conn;
 	}
 
@@ -46,6 +43,7 @@ public class ConsultaDAO {
 		} finally {
 			BancoDados.finalizarStatement(ps);
 			BancoDados.finalizarResultSet(rs);
+			BancoDados.desconectar();
 		}
 	}
 	
@@ -66,6 +64,7 @@ public class ConsultaDAO {
 
 		} finally {
 			BancoDados.finalizarStatement(ps);
+			BancoDados.desconectar();
 		}
 	}
 	
@@ -85,6 +84,7 @@ public class ConsultaDAO {
 
 		} finally {
 			BancoDados.finalizarStatement(ps);
+			BancoDados.desconectar();
 		}
 	}	
 
@@ -96,6 +96,7 @@ public class ConsultaDAO {
 			ps.setInt(1, id);		
 		} finally {
 			BancoDados.finalizarStatement(ps);
+			BancoDados.desconectar();
 		}
 	}
 }

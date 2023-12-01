@@ -29,6 +29,7 @@ public class ExameDAO {
 
 		} finally {
 			BancoDados.finalizarStatement(ps);
+			BancoDados.desconectar();
 		}
 	}
 	
@@ -58,6 +59,7 @@ public class ExameDAO {
 
 			BancoDados.finalizarStatement(ps);
 			BancoDados.finalizarResultSet(rs);
+			BancoDados.desconectar();
 		}
 	}
 }

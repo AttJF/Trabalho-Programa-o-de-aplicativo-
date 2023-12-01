@@ -8,7 +8,8 @@ import java.sql.SQLException;
 import entities.Endereco;
 
 public class EnderecoDAO {
-	Connection conn;
+	
+	private Connection conn;
 	
 	public EnderecoDAO(Connection conn) {
 		this.conn = conn;
@@ -43,6 +44,7 @@ public class EnderecoDAO {
 
 			BancoDados.finalizarStatement(st);
 			BancoDados.finalizarResultSet(rs);
+			BancoDados.desconectar();
 		}
 	}
 	
@@ -64,6 +66,7 @@ public class EnderecoDAO {
 
 		} finally {
 			BancoDados.finalizarStatement(ps);
+			BancoDados.desconectar();
 		}
 	}
 	
@@ -85,17 +88,21 @@ public class EnderecoDAO {
 		} finally {
 
 			BancoDados.finalizarStatement(ps);
+			BancoDados.desconectar();
 		}
 	}
 	
-	public void excluir(int id) throws SQLException {
+	public int excluir(int id) throws SQLException {
 		PreparedStatement ps = null;
 
 		try {
 			ps = conn.prepareStatement("delete from endereco where IDendereco = ?");
-			ps.setInt(1, id);		
+			ps.setInt(1, id);
+			int linhasManipuladas = ps.executeUpdate();
+			return linhasManipuladas;
 		} finally {
 			BancoDados.finalizarStatement(ps);
+			BancoDados.desconectar();
 		}
 	}
 }

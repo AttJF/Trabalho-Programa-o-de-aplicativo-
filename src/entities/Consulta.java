@@ -72,5 +72,11 @@ public class Consulta {
 	public void setDia(int dia) {
 		this.dia = dia;
 	}
+
+	@Override
+	public String toString() {
+		return "Consulta [id=" + id + ", medico=" + medico + ", dia=" + dia + ", horario=" + horario + ", paciente="
+				+ paciente + ", pago=" + pago + "]";
+	}
 	
 }

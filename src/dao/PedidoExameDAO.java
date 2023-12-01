@@ -30,6 +30,7 @@ public class PedidoExameDAO {
 			ps.executeUpdate();
 		} finally {
 			BancoDados.finalizarStatement(ps);
+			BancoDados.desconectar();
 		}
 	}
 	
@@ -62,6 +63,7 @@ public class PedidoExameDAO {
 		} finally {
 			BancoDados.finalizarStatement(ps);
 			BancoDados.finalizarResultSet(rs);
+			BancoDados.desconectar();
 		}
 	}
 	
@@ -81,6 +83,7 @@ public class PedidoExameDAO {
 			ps.executeUpdate();
 		} finally {
 			BancoDados.finalizarStatement(ps);
+			BancoDados.desconectar();
 		}
 	}
 }
