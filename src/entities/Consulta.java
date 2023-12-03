@@ -3,17 +3,19 @@ package entities;
 public class Consulta {
 	private int id; 
 	private Medico medico;
-	private int dia, horario;
+	private int Horario;
+	private int dia;
 	private Paciente paciente;
 	private boolean pago;
 	
-	public Consulta(int id, Medico medico, int dia, int horario, Paciente paciente, boolean pago) {
+	public Consulta(int id, Medico medico, int horario, Paciente paciente, boolean pago,int dia) {
 		super();
 		this.id = id;
 		this.medico = medico;
-		this.horario = horario;
+		Horario = horario;
 		this.paciente = paciente;
 		this.pago = pago;
+		this.dia=dia;
 	}
 	private void pagar(int valor, String forma) {
 		if(this.pago) {
@@ -43,10 +45,10 @@ public class Consulta {
 		this.medico = medico;
 	}
 	public int getHorario() {
-		return horario;
+		return Horario;
 	}
 	public void setHorario(int horario) {
-		this.horario = horario;
+		Horario = horario;
 	}
 	public Paciente getPaciente() {
 		return paciente;
