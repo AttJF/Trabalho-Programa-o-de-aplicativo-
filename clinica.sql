@@ -7,3 +7,5 @@ CREATE TABLE `clinica`.`medico` (`IDmedico` INT NOT NULL AUTO_INCREMENT , `crm` 
 CREATE TABLE `clinica`.`exame` (`IDexame` INT NOT NULL AUTO_INCREMENT , `nome` VARCHAR(50) NOT NULL , `custo` DOUBLE NOT NULL , `orientacao` VARCHAR(300) NOT NULL , PRIMARY KEY (`IDexame`)) ENGINE = InnoDB;
 
 CREATE TABLE `clinica`.`endereco` (`IDendereco` INT NOT NULL AUTO_INCREMENT , `rua` VARCHAR(50) NOT NULL , `bairro` VARCHAR(50) NOT NULL , `cidade` VARCHAR(50) NOT NULL , `complemento` VARCHAR(100) NOT NULL , `numero` INT NOT NULL , `uniaofederativa` VARCHAR(2) NOT NULL , PRIMARY KEY (`IDendereco`)) ENGINE = InnoDB;
+
+CREATE TABLE `clinica`.`pedidoexame` (`IDpedidoexame` INT NOT NULL AUTO_INCREMENT, `datarealizacao` varchar(50) NOT NULL, `valorpago` DOUBLE NOT NULL, `IDmedico` INT NOT NULL, `IDpaciente` INT NOT NULL, `IDexame` INT NOT NULL, PRIMARY KEY (`IDpedidoexame`)) ENGINE=InnoDB;

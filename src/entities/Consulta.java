@@ -3,25 +3,28 @@ package entities;
 public class Consulta {
 	private int id; 
 	private Medico medico;
-	private int Horario;
-	private int dia;
+	private int dia, horario;
 	private Paciente paciente;
 	private boolean pago;
 	
-	public Consulta(int id, Medico medico, int horario, Paciente paciente, boolean pago,int dia) {
+	public Consulta(int id, Medico medico, int dia, int horario, Paciente paciente, boolean pago) {
 		super();
 		this.id = id;
 		this.medico = medico;
-		Horario = horario;
+		this.horario = horario;
 		this.paciente = paciente;
 		this.pago = pago;
-		this.dia=dia;
+		this.dia = dia;
 	}
+	
+	public Consulta() { }
+	
 	private void pagar(int valor, String forma) {
 		if(this.pago) {
 			System.out.println("pagamento ja realizado");
 		}
 	}
+	
 	private void remarcar(int novo) {
 		if(novo==1) {
 		this.setHorario(novo);
@@ -32,6 +35,7 @@ public class Consulta {
 	private void buscar() {
 		
 	}
+	
 	public int getId() {
 		return id;
 	}
@@ -45,10 +49,10 @@ public class Consulta {
 		this.medico = medico;
 	}
 	public int getHorario() {
-		return Horario;
+		return horario;
 	}
 	public void setHorario(int horario) {
-		Horario = horario;
+		this.horario = horario;
 	}
 	public Paciente getPaciente() {
 		return paciente;
@@ -62,4 +66,17 @@ public class Consulta {
 	public void setPago(boolean pago) {
 		this.pago = pago;
 	}
+	public int getDia() {
+		return dia;
+	}
+	public void setDia(int dia) {
+		this.dia = dia;
+	}
+
+	@Override
+	public String toString() {
+		return "Consulta [id=" + id + ", medico=" + medico + ", dia=" + dia + ", horario=" + horario + ", paciente="
+				+ paciente + ", pago=" + pago + "]";
+	}
+	
 }

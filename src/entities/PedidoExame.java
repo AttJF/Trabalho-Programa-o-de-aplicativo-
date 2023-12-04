@@ -18,6 +18,8 @@ public class PedidoExame {
 		this.dataRealizacao = dataRealizacao;
 	}
 	
+	public PedidoExame() { }
+	
 	public void pagarExame() {
 		this.valorPago = this.exame.getCustoExame();
 	}

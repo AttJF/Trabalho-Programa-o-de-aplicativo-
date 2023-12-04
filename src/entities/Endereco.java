@@ -8,10 +8,10 @@ public class Endereco {
 	private String cidade;
 	private String complemento;
 	private int numero;
-	private String uniãoFederativa;
+	private String uniaoFederativa;
 	
 	public Endereco(int id, String rua, String bairro, String cidade, String complemento, int numero,
-			String uniãoFederativa) {
+			String uniaoFederativa) {
 		super();
 		this.id = id;
 		this.rua = rua;
@@ -19,9 +19,11 @@ public class Endereco {
 		this.cidade = cidade;
 		this.complemento = complemento;
 		this.numero = numero;
-		this.uniãoFederativa = uniãoFederativa;
+		this.uniaoFederativa = uniaoFederativa;
 						
 }
+	
+	public Endereco() { }
 
 	public int getId() {
 		return id;
@@ -71,12 +73,18 @@ public class Endereco {
 		this.numero = numero;
 	}
 
-	public String getUniãoFederativa() {
-		return uniãoFederativa;
+	public String getUniaoFederativa() {
+		return uniaoFederativa;
 	}
 
-	public void setUniãoFederativa(String uniãoFederativa) {
-		this.uniãoFederativa = uniãoFederativa;
+	public void setUniaoFederativa(String uniaoFederativa) {
+		this.uniaoFederativa = uniaoFederativa;
+	}
+
+	@Override
+	public String toString() {
+		return "Endereco [id=" + id + ", rua=" + rua + ", bairro=" + bairro + ", cidade=" + cidade + ", complemento="
+				+ complemento + ", numero=" + numero + ", uniãoFederativa=" + uniaoFederativa + "]";
 	}
 	
 	
