@@ -56,5 +56,10 @@ public class Exame {
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "[id=" + idExame + ", nome=" + nomeExame + ", custo=" + custoExame
+				+ ", orientacoes=" + orientacoes + ", codigo=" + codigo + "]";
+	}
 }

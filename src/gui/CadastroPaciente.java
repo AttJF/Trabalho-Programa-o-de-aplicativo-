@@ -17,13 +17,16 @@ import javax.swing.JTextField;
 import javax.swing.JSpinner;
 import javax.swing.JRadioButton;
 import javax.swing.JSeparator;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JEditorPane;
 
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 import java.awt.event.ActionEvent;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.JComboBox;
 
 public class CadastroPaciente extends JFrame {
 
@@ -51,6 +54,7 @@ public class CadastroPaciente extends JFrame {
 	private JSpinner diaNascimento;
 	private JSpinner mesNascimento;
 	private JSpinner anoNascimento;
+	private JComboBox cbFormasPagamento;
 
 	/**
 	 * Launch the application.
@@ -72,6 +76,12 @@ public class CadastroPaciente extends JFrame {
 		});
 	}
 	
+	private String[] formasDePagamento() {
+		return Arrays.stream(FormaDePagamento.values())
+                .map(Enum::name)
+                .toArray(String[]::new);
+	}
+	
 	private void cadastrarPaciente() {
 		try {
 			Paciente paciente = new Paciente();
@@ -89,12 +99,13 @@ public class CadastroPaciente extends JFrame {
 			String str = this.diaNascimento.getValue().toString() + "/" + this.mesNascimento.getValue().toString() + "/" + this.anoNascimento.getValue().toString();
 			paciente.setDataNascimento(str);
 			paciente.setEndereco(endereco);
-			// TODO: paciente.setFormaPagamento();
+			paciente.setFormaPagamento(FormaDePagamento.values()[cbFormasPagamento.getSelectedIndex()]);
 			paciente.setNome(this.txtNome.getText());
 			paciente.setSexo(verificarSelecaoRadioButtonSexo());
 			paciente.setTelefone(this.txtTelefone.getText());
 			
 			this.pacienteService.cadastrar(paciente);
+			System.out.println(paciente);
 
 		} catch (Exception e) {
 			System.out.println(e);
@@ -126,7 +137,7 @@ public class CadastroPaciente extends JFrame {
 		contentPane.setLayout(null);
 		
 		lblNewLabel = new JLabel("Nome :");
-		lblNewLabel.setBounds(10, 50, 46, 14);
+		lblNewLabel.setBounds(10, 28, 46, 14);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Cadastro de Paciente");
@@ -134,7 +145,7 @@ public class CadastroPaciente extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		txtNome = new JTextField();
-		txtNome.setBounds(49, 47, 406, 20);
+		txtNome.setBounds(49, 28, 406, 20);
 		contentPane.add(txtNome);
 		txtNome.setColumns(10);
 		
@@ -289,9 +300,14 @@ public class CadastroPaciente extends JFrame {
 		textField_4.setBounds(208, 229, 151, 20);
 		contentPane.add(textField_4);
 		textField_4.setColumns(10);
-	}
-
-	public JLabel getLblNewLabel() {
-		return lblNewLabel;
+		
+		JLabel lblNewLabel_5 = new JLabel("Forma de Pagamento");
+		lblNewLabel_5.setBounds(10, 57, 119, 14);
+		contentPane.add(lblNewLabel_5);
+		
+		cbFormasPagamento = new JComboBox();
+		cbFormasPagamento.setModel(new DefaultComboBoxModel(formasDePagamento()));
+		cbFormasPagamento.setBounds(149, 55, 306, 22);
+		contentPane.add(cbFormasPagamento);
 	}
 }

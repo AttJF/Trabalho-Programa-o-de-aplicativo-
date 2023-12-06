@@ -79,7 +79,7 @@ public class Medico {
 
 	@Override
 	public String toString() {
-		return "Medico [ID=" + id + ", CRM=" + CRM + ", telefone=" + telefone + ", nome=" + nome + ", especialidade="
-				+ especialidade + "]";
+		return "[id=" + id + ", CRM=" + CRM + ", telefone=" + telefone + ", nome=" + nome + ", especialidade="
+				+ especialidade.getNome() + "]";
 	}
 }

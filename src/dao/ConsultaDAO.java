@@ -4,8 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import entities.Consulta;
+import entities.Exame;
 
 public class ConsultaDAO {
 	
@@ -34,12 +37,76 @@ public class ConsultaDAO {
 				consulta.setHorario(rs.getString("horario"));
 				consulta.setPago(rs.getBoolean("pago"));
 				consulta.setMedico(medicoDao.buscarPorId(rs.getInt("IDmedico")));
-				consulta.setPaciente(pacienteDao.buscarPorId(rs.getInt("IDmedico")));
+				consulta.setPaciente(pacienteDao.buscarPorId(rs.getInt("IDpaciente")));
 				
 				return consulta;
 			}
 			
 			return null;
+		} finally {
+			BancoDados.finalizarStatement(ps);
+			BancoDados.finalizarResultSet(rs);
+		}
+	}
+	
+	public List<Consulta> buscarTodosPorMedico(int id) throws SQLException {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		PacienteDAO pacienteDao = new PacienteDAO(conn);
+		MedicoDAO medicoDao = new MedicoDAO(conn);
+		List<Consulta> listaConsultas = new ArrayList<>();
+
+		try {
+			ps = conn.prepareStatement("select * from consulta where IDmedico = ?");
+			ps.setInt(1, id);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Consulta consulta = new Consulta();
+
+				consulta.setId(rs.getInt("IDconsulta"));
+				consulta.setData(rs.getString("data"));
+				consulta.setHorario(rs.getString("horario"));
+				consulta.setPago(rs.getBoolean("pago"));
+				consulta.setMedico(medicoDao.buscarPorId(rs.getInt("IDmedico")));
+				consulta.setPaciente(pacienteDao.buscarPorId(rs.getInt("IDpaciente")));
+				
+				listaConsultas.add(consulta);
+			}
+
+			return listaConsultas;
+		} finally {
+			BancoDados.finalizarStatement(ps);
+			BancoDados.finalizarResultSet(rs);
+		}
+	}
+	
+	public List<Consulta> buscarTodosPorPaciente(int id) throws SQLException {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		PacienteDAO pacienteDao = new PacienteDAO(conn);
+		MedicoDAO medicoDao = new MedicoDAO(conn);
+		List<Consulta> listaConsultas = new ArrayList<>();
+
+		try {
+			ps = conn.prepareStatement("select * from consulta where IDpaciente = ?");
+			ps.setInt(1, id);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Consulta consulta = new Consulta();
+
+				consulta.setId(rs.getInt("IDconsulta"));
+				consulta.setData(rs.getString("data"));
+				consulta.setHorario(rs.getString("horario"));
+				consulta.setPago(rs.getBoolean("pago"));
+				consulta.setMedico(medicoDao.buscarPorId(rs.getInt("IDmedico")));
+				consulta.setPaciente(pacienteDao.buscarPorId(rs.getInt("IDpaciente")));
+				
+				listaConsultas.add(consulta);
+			}
+
+			return listaConsultas;
 		} finally {
 			BancoDados.finalizarStatement(ps);
 			BancoDados.finalizarResultSet(rs);

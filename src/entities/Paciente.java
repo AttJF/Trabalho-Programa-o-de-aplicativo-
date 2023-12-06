@@ -77,7 +77,7 @@ public class Paciente {
 
 	@Override
 	public String toString() {
-		return "Paciente [ID=" + id + ", nome=" + nome + ", dataNascimento=" + dataNascimento + ", sexo=" + sexo
+		return "[id=" + id + ", nome=" + nome + ", dataNascimento=" + dataNascimento + ", sexo=" + sexo
 				+ ", telefone=" + telefone + ", formaPagamento=" + formaPagamento + ", endereco=" + endereco.toString() + "]";
 	}
 }

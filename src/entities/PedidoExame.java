@@ -71,4 +71,12 @@ public class PedidoExame {
 	public void setDataRealizacao(String dataRealizacao) {
 		this.dataRealizacao = dataRealizacao;
 	}
+
+	@Override
+	public String toString() {
+		return "idPedidoExame=" + idPedidoExame + ", medico=" + medico.toString() + ", paciente=" + paciente.toString()
+				+ ", exame=" + exame.toString() + ", valorPago=" + valorPago + ", dataRealizacao=" + dataRealizacao + "\n";
+	}
+	
+	
 }

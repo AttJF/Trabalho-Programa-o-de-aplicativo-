@@ -19,20 +19,6 @@ public class Consulta {
 	
 	public Consulta() { }
 	
-	private void pagar(int valor, String forma) {
-		if(this.pago) {
-			System.out.println("pagamento ja realizado");
-		}
-	}
-	
-//	private void remarcar(int novo) {
-//		if(novo==1) {
-//		this.setHorario(novo);
-//		}
-//		else
-//		System.out.println("Horario nao disponivel para consulta");
-//	}
-	
 	public int getId() {
 		return id;
 	}
@@ -72,8 +58,8 @@ public class Consulta {
 
 	@Override
 	public String toString() {
-		return "Consulta [id=" + id + ", medico=" + medico + ", dia=" + data + ", horario=" + horario + ", paciente="
-				+ paciente + ", pago=" + pago + "]";
+		return "id=" + id + ", medico=" + medico.toString() + ", data=" + data + ", horario=" + horario + ", paciente="
+				+ paciente.toString() + ", pago=" + pago + "\n";
 	}
 	
 }

@@ -102,7 +102,7 @@ public class AgendarExame extends JFrame {
 		try {
 			PedidoExame pedidoExame = new PedidoExame();
 			
-			pedidoExame.setDataRealizacao(this.txtData.getText() + this.txtHorario.getText());
+			pedidoExame.setDataRealizacao(this.txtData.getText() + "-" + this.txtHorario.getText());
 			pedidoExame.setExame(exames.get(cbExames.getSelectedIndex()));
 			pedidoExame.setMedico(medicos.get(cbMedicos.getSelectedIndex()));
 			pedidoExame.setPaciente(pacientes.get(cbPacientes.getSelectedIndex()));

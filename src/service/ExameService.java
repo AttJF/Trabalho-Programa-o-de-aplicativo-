@@ -10,6 +10,7 @@ import dao.EspecialidadeDAO;
 import dao.ExameDAO;
 import entities.Especialidade;
 import entities.Exame;
+import entities.Paciente;
 
 public class ExameService {
 	public void cadastrar(Exame exame) throws SQLException, IOException {
