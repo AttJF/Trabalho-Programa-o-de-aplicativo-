@@ -10,4 +10,4 @@ CREATE TABLE `clinica`.`endereco` (`IDendereco` INT NOT NULL AUTO_INCREMENT , `r
 
 CREATE TABLE `clinica`.`pedidoexame` (`IDpedidoexame` INT NOT NULL AUTO_INCREMENT, `datarealizacao` varchar(50) NOT NULL, `valorpago` DOUBLE NOT NULL, `IDmedico` INT NOT NULL, `IDpaciente` INT NOT NULL, `IDexame` INT NOT NULL, PRIMARY KEY (`IDpedidoexame`)) ENGINE=InnoDB;
 
-CREATE TABLE `clinica`.`especialidade` (`IDespecialidade` INT NOT NULL AUTO_INCREMENT , `nome` VARCHAR(50) NOT NULL, PRIMARY KEY (`IDespecialidade`)) ENGINE = InnoDB;
+CREATE TABLE `clinica`.`especialidade` (`IDespecialidade` INT NOT NULL AUTO_INCREMENT , `nome` VARCHAR(50) NOT NULL, `codigo` varchar(50) NOT NULL, PRIMARY KEY (`IDespecialidade`)) ENGINE = InnoDB;

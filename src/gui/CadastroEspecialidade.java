@@ -1,11 +1,18 @@
 package gui;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import entities.Especialidade;
+import service.EspecialidadeService;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
@@ -13,12 +20,15 @@ public class CadastroEspecialidade extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField txtCodigo;
+	private JTextField txtNome;
 
 	/**
 	 * Launch the application.
 	 */
+	
+	EspecialidadeService especialidadeService = new EspecialidadeService();
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -35,6 +45,15 @@ public class CadastroEspecialidade extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	private void cadastrarEspecialidade() {
+		try {
+			especialidadeService.cadastrar(new Especialidade(this.txtNome.getText(), this.txtCodigo.getText()));			
+		} catch (Exception e) {
+			System.out.println(e);
+			JOptionPane.showMessageDialog(null, "Erro ao cadastrar uma nova especialidade.", "Cadastro", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
 	public CadastroEspecialidade() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 452, 124);
@@ -52,23 +71,28 @@ public class CadastroEspecialidade extends JFrame {
 		lblNewLabel_1.setBounds(20, 35, 83, 14);
 		contentPane.add(lblNewLabel_1);
 		
-		textField = new JTextField();
-		textField.setBounds(62, 32, 86, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		txtCodigo = new JTextField();
+		txtCodigo.setBounds(62, 32, 86, 20);
+		contentPane.add(txtCodigo);
+		txtCodigo.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Nome");
 		lblNewLabel.setBounds(158, 35, 46, 14);
 		contentPane.add(lblNewLabel);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(195, 32, 231, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		txtNome = new JTextField();
+		txtNome.setBounds(195, 32, 231, 20);
+		contentPane.add(txtNome);
+		txtNome.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Cadastrar\r\n");
 		btnNewButton.setBounds(20, 60, 406, 23);
 		contentPane.add(btnNewButton);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cadastrarEspecialidade();
+			}
+		});
 	}
 
 }

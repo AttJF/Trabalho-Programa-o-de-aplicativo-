@@ -105,7 +105,6 @@ public class CadastroMedico extends JFrame {
 			medico.setEspecialidade(especialidades.get(cbEspecialidades.getSelectedIndex()));
 			
 			this.medicoService.cadastrar(medico);
-			System.out.println(medico.toString());
 		} catch (Exception e) {
 			System.out.println(e);
 			JOptionPane.showMessageDialog(null, "Erro ao cadastrar um novo médico.", "Cadastro", JOptionPane.ERROR_MESSAGE);

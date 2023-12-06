@@ -34,6 +34,7 @@ public class EspecialidadeDAO {
 				
 				especialidade.setNome(rs.getString("nome"));
 				especialidade.setId(rs.getInt("IDespecialidade"));
+				especialidade.setCodigo(rs.getString("codigo"));
 				
 				return especialidade;
 			}
@@ -62,6 +63,7 @@ public class EspecialidadeDAO {
 
 				especialidade.setId(rs.getInt("IDespecialidade"));
 				especialidade.setNome(rs.getString("nome"));
+				especialidade.setCodigo(rs.getString("codigo"));
 				
 				listaEspecialidades.add(especialidade);
 			}
@@ -78,10 +80,11 @@ public class EspecialidadeDAO {
 		PreparedStatement ps = null;
 		
 		try {
-			ps = conn.prepareStatement("update especialidade set nome = ? where IDendereco = ?");
+			ps = conn.prepareStatement("update especialidade set nome = ?, codigo = ? where IDendereco = ?");
 
 			ps.setString(1, especialidade.getNome());
 			ps.setInt(2, especialidade.getId());
+			ps.setString(3, especialidade.getCodigo());
 
 			ps.executeUpdate();
 
@@ -96,9 +99,10 @@ public class EspecialidadeDAO {
 		ResultSet rs = null;
 		
 		try {
-			ps = conn.prepareStatement("insert into especialidade (nome) values (?)", Statement.RETURN_GENERATED_KEYS);
+			ps = conn.prepareStatement("insert into especialidade (nome, codigo) values (?, ?)", Statement.RETURN_GENERATED_KEYS);
 
 			ps.setString(1, especialidade.getNome());
+			ps.setString(2, especialidade.getCodigo());
 
 			ps.executeUpdate();
 			

@@ -95,7 +95,6 @@ public class CadastroPaciente extends JFrame {
 			paciente.setTelefone(this.txtTelefone.getText());
 			
 			this.pacienteService.cadastrar(paciente);
-			System.out.println(paciente.toString());
 
 		} catch (Exception e) {
 			System.out.println(e);
