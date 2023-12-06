@@ -8,12 +8,16 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JList;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class HistoricoPaciente extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
+	private JTable table;
+	private JTable table_1;
 
 	/**
 	 * Launch the application.
@@ -52,21 +56,37 @@ public class HistoricoPaciente extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JList list = new JList();
-		list.setBounds(10, 208, 471, 115);
-		contentPane.add(list);
-		
 		JLabel lblNewLabel_1 = new JLabel("Exames\r\n");
 		lblNewLabel_1.setBounds(219, 181, 46, 14);
 		contentPane.add(lblNewLabel_1);
 		
-		JList list_1 = new JList();
-		list_1.setBounds(10, 62, 471, 108);
-		contentPane.add(list_1);
-		
 		JLabel lblNewLabel_2 = new JLabel("Consultas\r\n");
 		lblNewLabel_2.setBounds(219, 37, 75, 14);
 		contentPane.add(lblNewLabel_2);
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null},
+			},
+			new String[] {
+				"Data", "Hora", "Medico"
+			}
+		));
+		table.setBounds(10, 62, 471, 108);
+		contentPane.add(table);
+		
+		table_1 = new JTable();
+		table_1.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null},
+			},
+			new String[] {
+					"Data", "Hora", "Exame"
+			}
+		));
+		table_1.setBounds(21, 202, 460, 121);
+		contentPane.add(table_1);
 	}
 
 }
