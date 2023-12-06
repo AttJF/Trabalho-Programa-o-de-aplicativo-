@@ -5,6 +5,13 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import entities.Endereco;
+import entities.FormaDePagamento;
+import entities.Paciente;
+import service.EnderecoService;
+import service.PacienteService;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JSpinner;
@@ -16,26 +23,42 @@ import javax.swing.JEditorPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JFormattedTextField;
-import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 
 public class CadastroPaciente extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JLabel lblNewLabel;
-	private JTextField textField;
+	private JTextField txtNome;
 	/**
 	 * @wbp.nonvisual location=-40,359
 	 */
-	private final JSeparator separator = new JSeparator();
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JTextField txtUf;
 	private JTextField textField_3;
+	private JTextField txtCidade;
 	private JTextField textField_4;
+	private JTextField txtRua;
+	private JTextField txtBairro;
+	private JTextField txtNumero;
+	private JFormattedTextField txtTelefone;
+	private JEditorPane txtComplemento;
+	private JRadioButton rbMasculino;
+	private JRadioButton rbFeminino;
+	private JRadioButton rbOutro;
+	private JSpinner diaNascimento;
+	private JSpinner mesNascimento;
+	private JSpinner anoNascimento;
 
 	/**
 	 * Launch the application.
 	 */
+	
+	PacienteService pacienteService = new PacienteService();
+	EnderecoService enderecoService = new EnderecoService();
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -47,6 +70,48 @@ public class CadastroPaciente extends JFrame {
 				}
 			}
 		});
+	}
+	
+	private void cadastrarPaciente() {
+		try {
+			Paciente paciente = new Paciente();
+			Endereco endereco = new Endereco();
+			
+			endereco.setBairro(this.txtBairro.getText());
+			endereco.setCidade(this.txtCidade.getText());
+			endereco.setComplemento(this.txtComplemento.getText());
+			endereco.setNumero(Integer.parseInt(this.txtNumero.getText()));
+			endereco.setRua(this.txtRua.getText());
+			endereco.setUniaoFederativa(this.txtUf.getText());
+			
+			this.enderecoService.cadastrar(endereco);
+			
+			String str = this.diaNascimento.getValue().toString() + "/" + this.mesNascimento.getValue().toString() + "/" + this.anoNascimento.getValue().toString();
+			paciente.setDataNascimento(str);
+			paciente.setEndereco(endereco);
+			// TODO: paciente.setFormaPagamento();
+			paciente.setNome(this.txtNome.getText());
+			paciente.setSexo(verificarSelecaoRadioButtonSexo());
+			paciente.setTelefone(this.txtTelefone.getText());
+			
+			this.pacienteService.cadastrar(paciente);
+			System.out.println(paciente.toString());
+
+		} catch (Exception e) {
+			System.out.println(e);
+			JOptionPane.showMessageDialog(null, "Erro ao cadastrar um novo paciente.", "Cadastro", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	private String verificarSelecaoRadioButtonSexo() {
+
+		if (this.rbMasculino.isSelected()) {
+			return this.rbMasculino.getText();
+		} else if (this.rbFeminino.isSelected()) {
+			return this.rbFeminino.getText();
+		} else {
+			return this.rbOutro.getText();
+		}
 	}
 
 	/**
@@ -69,43 +134,43 @@ public class CadastroPaciente extends JFrame {
 		lblNewLabel_1.setBounds(10, 0, 168, 30);
 		contentPane.add(lblNewLabel_1);
 		
-		textField = new JTextField();
-		textField.setBounds(49, 47, 406, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		txtNome = new JTextField();
+		txtNome.setBounds(49, 47, 406, 20);
+		contentPane.add(txtNome);
+		txtNome.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Data de nascimento");
 		lblNewLabel_2.setBounds(152, 96, 116, 14);
 		contentPane.add(lblNewLabel_2);
 		
-		JSpinner spinner = new JSpinner();
-		spinner.setBounds(265, 93, 47, 20);
-		contentPane.add(spinner);
+		diaNascimento = new JSpinner();
+		diaNascimento.setBounds(265, 93, 47, 20);
+		contentPane.add(diaNascimento);
 		
-		JSpinner spinner_1 = new JSpinner();
-		spinner_1.setBounds(322, 93, 46, 20);
-		contentPane.add(spinner_1);
+		mesNascimento = new JSpinner();
+		mesNascimento.setBounds(322, 93, 46, 20);
+		contentPane.add(mesNascimento);
 		
-		JSpinner spinner_2 = new JSpinner();
-		spinner_2.setBounds(378, 93, 77, 20);
-		contentPane.add(spinner_2);
+		anoNascimento = new JSpinner();
+		anoNascimento.setBounds(378, 93, 77, 20);
+		contentPane.add(anoNascimento);
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 82, 116, 99);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Masculino");
-		rdbtnNewRadioButton.setBounds(6, 21, 109, 23);
-		panel.add(rdbtnNewRadioButton);
+		rbMasculino = new JRadioButton("Masculino");
+		rbMasculino.setBounds(6, 21, 109, 23);
+		panel.add(rbMasculino);
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Feminino");
-		rdbtnNewRadioButton_1.setBounds(6, 45, 109, 23);
-		panel.add(rdbtnNewRadioButton_1);
+		rbFeminino = new JRadioButton("Feminino");
+		rbFeminino.setBounds(6, 45, 109, 23);
+		panel.add(rbFeminino);
 		
-		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Outro");
-		rdbtnNewRadioButton_2.setBounds(6, 71, 109, 23);
-		panel.add(rdbtnNewRadioButton_2);
+		rbOutro = new JRadioButton("Outro");
+		rbOutro.setBounds(6, 71, 109, 23);
+		panel.add(rbOutro);
 		
 		JLabel lblNewLabel_3 = new JLabel("Sexo");
 		lblNewLabel_3.setBounds(45, 0, 24, 14);
@@ -114,6 +179,7 @@ public class CadastroPaciente extends JFrame {
 		JButton btnNewButton = new JButton("Cadastrar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cadastrarPaciente();
 			}
 		});
 		btnNewButton.setBounds(347, 130, 108, 51);
@@ -123,9 +189,9 @@ public class CadastroPaciente extends JFrame {
 		lblNewLabel_4.setBounds(152, 133, 46, 14);
 		contentPane.add(lblNewLabel_4);
 		
-		JFormattedTextField formattedTextField = new JFormattedTextField();
-		formattedTextField.setBounds(208, 130, 121, 20);
-		contentPane.add(formattedTextField);
+		txtTelefone = new JFormattedTextField();
+		txtTelefone.setBounds(208, 130, 121, 20);
+		contentPane.add(txtTelefone);
 		
 		JButton btnNewButton_1 = new JButton("Carregar photo");
 		btnNewButton_1.setBounds(152, 158, 185, 23);
@@ -152,15 +218,15 @@ public class CadastroPaciente extends JFrame {
 		lblNewLabel_9.setBounds(186, 239, 46, 0);
 		contentPane.add(lblNewLabel_9);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(112, 229, 46, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		txtUf = new JTextField();
+		txtUf.setBounds(112, 229, 46, 20);
+		contentPane.add(txtUf);
+		txtUf.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(208, 229, 149, 20);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
+		txtCidade = new JTextField();
+		txtCidade.setBounds(208, 229, 149, 20);
+		contentPane.add(txtCidade);
+		txtCidade.setColumns(10);
 		
 		JSeparator separator_2 = new JSeparator();
 		separator_2.setBounds(10, 192, 1, 2);
@@ -174,36 +240,36 @@ public class CadastroPaciente extends JFrame {
 		lblNewLabel_10.setBounds(266, 260, 46, 14);
 		contentPane.add(lblNewLabel_10);
 		
-		textField_4 = new JTextField();
-		textField_4.setBounds(299, 257, 165, 20);
-		contentPane.add(textField_4);
-		textField_4.setColumns(10);
+		txtRua = new JTextField();
+		txtRua.setBounds(299, 257, 165, 20);
+		contentPane.add(txtRua);
+		txtRua.setColumns(10);
 		
 		JLabel lblNewLabel_11 = new JLabel("Bairro");
 		lblNewLabel_11.setBounds(10, 263, 46, 14);
 		contentPane.add(lblNewLabel_11);
 		
-		textField_5 = new JTextField();
-		textField_5.setBounds(40, 257, 216, 20);
-		contentPane.add(textField_5);
-		textField_5.setColumns(10);
+		txtBairro = new JTextField();
+		txtBairro.setBounds(40, 257, 216, 20);
+		contentPane.add(txtBairro);
+		txtBairro.setColumns(10);
 		
 		JLabel lblNewLabel_12 = new JLabel("Numero\r\n");
 		lblNewLabel_12.setBounds(367, 232, 46, 14);
 		contentPane.add(lblNewLabel_12);
 		
-		textField_6 = new JTextField();
-		textField_6.setBounds(413, 229, 51, 20);
-		contentPane.add(textField_6);
-		textField_6.setColumns(10);
+		txtNumero = new JTextField();
+		txtNumero.setBounds(413, 229, 51, 20);
+		contentPane.add(txtNumero);
+		txtNumero.setColumns(10);
 		
 		JLabel lblNewLabel_13 = new JLabel("Complemento\r\n");
 		lblNewLabel_13.setBounds(10, 302, 71, 14);
 		contentPane.add(lblNewLabel_13);
 		
-		JEditorPane editorPane = new JEditorPane();
-		editorPane.setBounds(91, 288, 362, 51);
-		contentPane.add(editorPane);
+		txtComplemento = new JEditorPane();
+		txtComplemento.setBounds(91, 288, 362, 51);
+		contentPane.add(txtComplemento);
 		
 		textField_1 = new JTextField();
 		textField_1.setBounds(66, 257, 190, 20);

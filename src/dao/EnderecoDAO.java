@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import entities.Endereco;
 
@@ -72,9 +73,10 @@ public class EnderecoDAO {
 	
 	public void cadastrar(Endereco endereco) throws SQLException {
 		PreparedStatement ps = null;
+		ResultSet rs = null;
 
 		try {
-			ps = conn.prepareStatement("insert into endereco (rua, bairro, cidade, complemento, numero, uniaofederativa) values (?, ?, ?, ?, ?, ?)");
+			ps = conn.prepareStatement("insert into endereco (rua, bairro, cidade, complemento, numero, uniaofederativa) values (?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 
 			ps.setString(1, endereco.getRua());
 			ps.setString(2, endereco.getBairro());
@@ -84,9 +86,12 @@ public class EnderecoDAO {
 			ps.setString(6, endereco.getUniaoFederativa());
 
 			ps.executeUpdate();
-
+			
+			rs = ps.getGeneratedKeys();
+			if (rs.next()) endereco.setId(rs.getInt(1));
+	        
 		} finally {
-
+			BancoDados.finalizarResultSet(rs);
 			BancoDados.finalizarStatement(ps);
 			BancoDados.desconectar();
 		}

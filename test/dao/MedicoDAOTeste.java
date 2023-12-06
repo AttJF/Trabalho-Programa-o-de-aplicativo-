@@ -33,7 +33,7 @@ public class MedicoDAOTeste {
 		//endereco.setId(id);
 		
 		Especialidade especialidade = new Especialidade();
-		especialidade.setNomeEspecialidade(nomeEspecialidade);
+		especialidade.setNome(nomeEspecialidade);
 		//especialidade.setId(id);
 		
 		Medico medico = new Medico();
@@ -74,7 +74,7 @@ public class MedicoDAOTeste {
 		endereco.setId(idEndereco);
 		
 		Especialidade especialidade = new Especialidade();
-		especialidade.setNomeEspecialidade(nomeEspecialidade);
+		especialidade.setNome(nomeEspecialidade);
 		especialidade.setId(idEspecialidade);
 		
 		Medico medico = new Medico();

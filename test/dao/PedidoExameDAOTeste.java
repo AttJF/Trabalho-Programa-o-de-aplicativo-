@@ -44,7 +44,7 @@ public class PedidoExameDAOTeste {
 		//endereco.setId(idEndereco);
 		
 		Especialidade especialidade = new Especialidade();
-		especialidade.setNomeEspecialidade(nomeEspecialidade);
+		especialidade.setNome(nomeEspecialidade);
 		//especialidade.setId(idEspecialidade);
 		
 		Medico medico = new Medico();
@@ -132,7 +132,7 @@ public class PedidoExameDAOTeste {
 		endereco.setId(idEndereco);
 		
 		Especialidade especialidade = new Especialidade();
-		especialidade.setNomeEspecialidade(nomeEspecialidade);
+		especialidade.setNome(nomeEspecialidade);
 		especialidade.setId(idEspecialidade);
 		
 		Medico medico = new Medico();

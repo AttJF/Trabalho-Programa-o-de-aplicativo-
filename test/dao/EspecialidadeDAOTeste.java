@@ -28,7 +28,7 @@ public class EspecialidadeDAOTeste {
 		
 		Especialidade especialidade = new Especialidade();
 		especialidade.setId(id);
-		especialidade.setNomeEspecialidade(nome);
+		especialidade.setNome(nome);
 		
 		Connection conn = BancoDados.conectar();
 		new EspecialidadeDAO(conn).atualizar(especialidade);
@@ -40,7 +40,7 @@ public class EspecialidadeDAOTeste {
 		
 		Especialidade especialidade = new Especialidade();
 		//especialidade.setId(id);
-		especialidade.setNomeEspecialidade(nome);
+		especialidade.setNome(nome);
 		
 		Connection conn = BancoDados.conectar();
 		new EspecialidadeDAO(conn).cadastrar(especialidade);

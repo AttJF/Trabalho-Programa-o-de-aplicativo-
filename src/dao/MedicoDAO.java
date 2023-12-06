@@ -21,12 +21,12 @@ public class MedicoDAO {
 		PreparedStatement ps = null;
 
 		try {
-			ps = conn.prepareStatement("insert into medico (crm, nome, telefone, especialidade, IDendereco) values (?, ?, ?, ?, ?)");
+			ps = conn.prepareStatement("insert into medico (crm, nome, telefone, IDespecialidade, IDendereco) values (?, ?, ?, ?, ?)");
 
 			ps.setInt(1, medico.getCRM());
 			ps.setString(2, medico.getNome());
 			ps.setString(3, medico.getTelefone());
-			ps.setString(4, medico.getEspecialidade().getNomeEspecialidade());
+			ps.setInt(4, medico.getEspecialidade().getId());
 			ps.setInt(5, medico.getEndereco().getId());
 
 			ps.executeUpdate();
@@ -40,11 +40,11 @@ public class MedicoDAO {
 		PreparedStatement ps = null;
 
 		try {
-			ps = conn.prepareStatement("update medico set  crm = ?, nome = ?, telefone = ? , especialidade = ?, IDendereco = ? where IDmedico = ?");
+			ps = conn.prepareStatement("update medico set  crm = ?, nome = ?, telefone = ? , IDespecialidade = ?, IDendereco = ? where IDmedico = ?");
 			ps.setInt(1, medico.getCRM());
 			ps.setString(2, medico.getNome());
 			ps.setString(3, medico.getTelefone());
-			ps.setString(4, medico.getEspecialidade().getNomeEspecialidade());
+			ps.setInt(4, medico.getEspecialidade().getId());
 			ps.setInt(5, medico.getEndereco().getId());
 			ps.setInt(6, medico.getId());
 
@@ -74,6 +74,7 @@ public class MedicoDAO {
 		PreparedStatement st = null;
 		ResultSet rs = null;
 		EnderecoDAO enderecoDao = new EnderecoDAO(conn);
+		EspecialidadeDAO especialidadeDAO = new EspecialidadeDAO(conn);
 
 		try {
 			st = conn.prepareStatement("select * from medico where IDmedico = ?");
@@ -85,7 +86,7 @@ public class MedicoDAO {
 				medico.setId(rs.getInt("IDmedico"));
 				medico.setNome(rs.getString("nome"));
 				medico.setCRM(rs.getInt("crm"));
-				medico.setEspecialidade(null);
+				medico.setEspecialidade(especialidadeDAO.buscarPorId(rs.getInt("IDespecialidade")));
 				medico.setTelefone(rs.getString("telefone"));
 				medico.setEndereco(enderecoDao.buscarPorId(rs.getInt("IDendereco")));
 				
@@ -106,6 +107,7 @@ public class MedicoDAO {
 		ResultSet rs = null;
 		List<Medico> listaMedicos = new ArrayList<>();
 		EnderecoDAO enderecoDao = new EnderecoDAO(conn);
+		EspecialidadeDAO especialidadeDAO = new EspecialidadeDAO(conn);
 
 		try {
 			ps = conn.prepareStatement("select * from medico where nome = ?");
@@ -118,7 +120,7 @@ public class MedicoDAO {
 				medico.setId(rs.getInt("IDmedico"));
 				medico.setNome(rs.getString("nome"));
 				medico.setCRM(rs.getInt("crm"));
-				medico.setEspecialidade(null);
+				medico.setEspecialidade(especialidadeDAO.buscarPorId(rs.getInt("IDespecialidade")));
 				medico.setTelefone(rs.getString("telefone"));
 				medico.setEndereco(enderecoDao.buscarPorId(rs.getInt("IDendereco")));
 				
@@ -138,6 +140,7 @@ public class MedicoDAO {
 		ResultSet rs = null;
 		List<Medico> listaMedicos = new ArrayList<>();
 		EnderecoDAO enderecoDao = new EnderecoDAO(conn);
+		EspecialidadeDAO especialidadeDAO = new EspecialidadeDAO(conn);
 
 		try {
 			ps = conn.prepareStatement("select * from medico order by nome");
@@ -149,7 +152,7 @@ public class MedicoDAO {
 				medico.setId(rs.getInt("IDmedico"));
 				medico.setNome(rs.getString("nome"));
 				medico.setCRM(rs.getInt("crm"));
-				medico.setEspecialidade(null);
+				medico.setEspecialidade(especialidadeDAO.buscarPorId(rs.getInt("IDespecialidade")));
 				medico.setTelefone(rs.getString("telefone"));
 				medico.setEndereco(enderecoDao.buscarPorId(rs.getInt("IDendereco")));
 				

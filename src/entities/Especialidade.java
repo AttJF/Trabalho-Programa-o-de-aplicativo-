@@ -1,26 +1,30 @@
 package entities;
 
 public class Especialidade {
-	private int idEspecialidade;
-	private String nomeEspecialidade;
+	private int id;
+	private String nome;
 
+	public Especialidade(String nome) {
+		this.nome = nome;
+	}
+	
 	public Especialidade() {
-		
+
 	}
 	
-	public int getIdEspecialidade() {
-		return idEspecialidade;
+	public int getId() {
+		return id;
 	}
 	
-	public void setId(int idEspecialidade) {
-		this.idEspecialidade = idEspecialidade;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public String getNomeEspecialidade() {
-		return nomeEspecialidade;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNomeEspecialidade(String nomeEspecialidade) {
-		this.nomeEspecialidade = nomeEspecialidade;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 }
