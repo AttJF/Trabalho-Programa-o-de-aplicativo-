@@ -30,8 +30,8 @@ public class ConsultaDAO {
 				Consulta consulta = new Consulta();
 
 				consulta.setId(rs.getInt("IDconsulta"));
-				consulta.setDia(rs.getInt("dia"));
-				consulta.setHorario(rs.getInt("horario"));
+				consulta.setData(rs.getString("data"));
+				consulta.setHorario(rs.getString("horario"));
 				consulta.setPago(rs.getBoolean("pago"));
 				consulta.setMedico(medicoDao.buscarPorId(rs.getInt("IDmedico")));
 				consulta.setPaciente(pacienteDao.buscarPorId(rs.getInt("IDmedico")));
@@ -50,11 +50,11 @@ public class ConsultaDAO {
 		PreparedStatement ps = null;
 
 		try {
-			ps = conn.prepareStatement("update consulta set IDmedico = ?, dia = ?, horario = ? , IDpaciente = ? , pago = ? where IDconsulta = ?");
+			ps = conn.prepareStatement("update consulta set IDmedico = ?, data = ?, horario = ? , IDpaciente = ? , pago = ? where IDconsulta = ?");
 
 			ps.setInt(1, consulta.getMedico().getId());
-			ps.setInt(2, consulta.getDia());
-			ps.setInt(3, consulta.getHorario());
+			ps.setString(2, consulta.getData());
+			ps.setString(3, consulta.getHorario());
 			ps.setInt(4, consulta.getPaciente().getId());
 			ps.setBoolean(5, consulta.isPago());
 			ps.setInt(6, consulta.getId());
@@ -70,11 +70,11 @@ public class ConsultaDAO {
 		PreparedStatement ps = null;
 
 		try {
-			ps = conn.prepareStatement("insert into consulta (IDmedico, dia, horario, IDpaciente, pago) values (?, ?, ?, ?, ?)");
+			ps = conn.prepareStatement("insert into consulta (IDmedico, data, horario, IDpaciente, pago) values (?, ?, ?, ?, ?)");
 
 			ps.setInt(1, consulta.getMedico().getId());
-			ps.setInt(2, consulta.getDia());
-			ps.setInt(3, consulta.getHorario());
+			ps.setString(2, consulta.getData());
+			ps.setString(3, consulta.getHorario());
 			ps.setInt(4, consulta.getPaciente().getId());
 			ps.setBoolean(5, consulta.isPago());
 

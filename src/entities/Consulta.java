@@ -3,18 +3,18 @@ package entities;
 public class Consulta {
 	private int id; 
 	private Medico medico;
-	private int dia, horario;
+	private String data, horario;
 	private Paciente paciente;
 	private boolean pago;
 	
-	public Consulta(int id, Medico medico, int dia, int horario, Paciente paciente, boolean pago) {
+	public Consulta(int id, Medico medico, String dia, String horario, Paciente paciente, boolean pago) {
 		super();
 		this.id = id;
 		this.medico = medico;
 		this.horario = horario;
 		this.paciente = paciente;
 		this.pago = pago;
-		this.dia = dia;
+		this.data = dia;
 	}
 	
 	public Consulta() { }
@@ -25,16 +25,13 @@ public class Consulta {
 		}
 	}
 	
-	private void remarcar(int novo) {
-		if(novo==1) {
-		this.setHorario(novo);
-		}
-		else
-		System.out.println("Horario nao disponivel para consulta");
-	}
-	private void buscar() {
-		
-	}
+//	private void remarcar(int novo) {
+//		if(novo==1) {
+//		this.setHorario(novo);
+//		}
+//		else
+//		System.out.println("Horario nao disponivel para consulta");
+//	}
 	
 	public int getId() {
 		return id;
@@ -48,10 +45,10 @@ public class Consulta {
 	public void setMedico(Medico medico) {
 		this.medico = medico;
 	}
-	public int getHorario() {
+	public String getHorario() {
 		return horario;
 	}
-	public void setHorario(int horario) {
+	public void setHorario(String horario) {
 		this.horario = horario;
 	}
 	public Paciente getPaciente() {
@@ -66,16 +63,16 @@ public class Consulta {
 	public void setPago(boolean pago) {
 		this.pago = pago;
 	}
-	public int getDia() {
-		return dia;
+	public String getData() {
+		return data;
 	}
-	public void setDia(int dia) {
-		this.dia = dia;
+	public void setData(String dia) {
+		this.data = dia;
 	}
 
 	@Override
 	public String toString() {
-		return "Consulta [id=" + id + ", medico=" + medico + ", dia=" + dia + ", horario=" + horario + ", paciente="
+		return "Consulta [id=" + id + ", medico=" + medico + ", dia=" + data + ", horario=" + horario + ", paciente="
 				+ paciente + ", pago=" + pago + "]";
 	}
 	

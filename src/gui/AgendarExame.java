@@ -93,7 +93,7 @@ public class AgendarExame extends JFrame {
 			return pacientes.stream().map(Paciente::getNome).toArray(String[]::new);
 		} catch (Exception e) {
 			System.out.println(e);
-			JOptionPane.showMessageDialog(null, "Erro ao buscar Exames.", "Cadastro", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Erro ao buscar Pacientes.", "Cadastro", JOptionPane.ERROR_MESSAGE);
 		}
 		return null;
 	}

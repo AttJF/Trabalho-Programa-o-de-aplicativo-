@@ -1,25 +1,47 @@
 package gui;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import entities.Consulta;
+import entities.Medico;
+import entities.Paciente;
+import service.ConsultaService;
+import service.MedicoService;
+import service.PacienteService;
+
 import javax.swing.JLabel;
-import javax.swing.JTextField;
+import javax.swing.JOptionPane;
 import javax.swing.JFormattedTextField;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 
 public class Agendamento extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JComboBox cbMedicos;
+	private JComboBox cbPacientes;
+	private JFormattedTextField txtData;
+	private JFormattedTextField txtHorario;
 
 	/**
 	 * Launch the application.
 	 */
+	
+	MedicoService medicoService = new MedicoService();
+	PacienteService pacienteService = new PacienteService();
+	ConsultaService consultaService = new ConsultaService();
+	List<Medico> medicos;
+	List<Paciente> pacientes;
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -31,6 +53,45 @@ public class Agendamento extends JFrame {
 				}
 			}
 		});
+	}
+	
+	private String[] buscarTodosMedicos() {
+		try {
+			medicos = medicoService.buscarTodos();
+			return medicos.stream().map(Medico::getNome).toArray(String[]::new);
+		} catch (Exception e) {
+			System.out.println(e);
+			JOptionPane.showMessageDialog(null, "Erro ao buscar Medicos.", "Cadastro", JOptionPane.ERROR_MESSAGE);
+		}
+		return null;
+	}
+	
+	private String[] buscarTodosPacientes() {
+		try {
+			pacientes = pacienteService.buscarTodos();
+			return pacientes.stream().map(Paciente::getNome).toArray(String[]::new);
+		} catch (Exception e) {
+			System.out.println(e);
+			JOptionPane.showMessageDialog(null, "Erro ao buscar Pacientes.", "Cadastro", JOptionPane.ERROR_MESSAGE);
+		}
+		return null;
+	}
+	
+	private void agendarConsulta() {
+		try {
+			Consulta consulta = new Consulta();
+			//TODO: FAZER A LOGICA DE VERIFICACAO DAS DATAS
+			consulta.setData(this.txtData.getText());
+			consulta.setHorario(this.txtHorario.getText());
+			consulta.setMedico(medicos.get(cbMedicos.getSelectedIndex()));
+			consulta.setPaciente(pacientes.get(cbPacientes.getSelectedIndex()));
+			//TODO: consulta.setPago(rootPaneCheckingEnabled);
+			
+			consultaService.cadastrar(consulta);
+		} catch (Exception e) {
+			System.out.println(e);
+			JOptionPane.showMessageDialog(null, "Erro ao cadastrar um novo médico.", "Cadastro", JOptionPane.ERROR_MESSAGE);
+		}
 	}
 
 	/**
@@ -57,15 +118,15 @@ public class Agendamento extends JFrame {
 		lblNewLabel_2.setBounds(10, 85, 46, 14);
 		contentPane.add(lblNewLabel_2);
 		
-		textField = new JTextField();
-		textField.setBounds(54, 82, 257, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		cbMedicos = new JComboBox();
+		cbMedicos.setModel(new DefaultComboBoxModel(buscarTodosMedicos()));
+		cbMedicos.setBounds(54, 43, 257, 20);
+		contentPane.add(cbMedicos);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(54, 43, 257, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		cbPacientes = new JComboBox();
+		cbPacientes.setModel(new DefaultComboBoxModel(buscarTodosPacientes()));
+		cbPacientes.setBounds(54, 82, 257, 20);
+		contentPane.add(cbPacientes);
 		
 		JLabel lblNewLabel_3 = new JLabel("Data ");
 		lblNewLabel_3.setBounds(10, 128, 46, 14);
@@ -75,15 +136,20 @@ public class Agendamento extends JFrame {
 		lblNewLabel_4.setBounds(113, 128, 46, 14);
 		contentPane.add(lblNewLabel_4);
 		
-		JFormattedTextField formattedTextField = new JFormattedTextField();
-		formattedTextField.setBounds(39, 125, 54, 20);
-		contentPane.add(formattedTextField);
+		txtData = new JFormattedTextField();
+		txtData.setBounds(39, 125, 54, 20);
+		contentPane.add(txtData);
 		
-		JFormattedTextField formattedTextField_1 = new JFormattedTextField();
-		formattedTextField_1.setBounds(144, 125, 60, 20);
-		contentPane.add(formattedTextField_1);
+		txtHorario = new JFormattedTextField();
+		txtHorario.setBounds(144, 125, 60, 20);
+		contentPane.add(txtHorario);
 		
 		JButton btnNewButton = new JButton("Cadastrar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				agendarConsulta();
+			}
+		});
 		btnNewButton.setBounds(225, 113, 89, 52);
 		contentPane.add(btnNewButton);
 	}
