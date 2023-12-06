@@ -43,7 +43,6 @@ public class ConsultaDAO {
 		} finally {
 			BancoDados.finalizarStatement(ps);
 			BancoDados.finalizarResultSet(rs);
-			BancoDados.desconectar();
 		}
 	}
 	
@@ -64,7 +63,6 @@ public class ConsultaDAO {
 
 		} finally {
 			BancoDados.finalizarStatement(ps);
-			BancoDados.desconectar();
 		}
 	}
 	
@@ -84,7 +82,6 @@ public class ConsultaDAO {
 
 		} finally {
 			BancoDados.finalizarStatement(ps);
-			BancoDados.desconectar();
 		}
 	}	
 
@@ -96,7 +93,6 @@ public class ConsultaDAO {
 			ps.setInt(1, id);		
 		} finally {
 			BancoDados.finalizarStatement(ps);
-			BancoDados.desconectar();
 		}
 	}
 }

@@ -10,8 +10,12 @@ import entities.Endereco;
 
 public class EnderecoService {
 	public void cadastrar(Endereco endereco) throws SQLException, IOException {
-		Connection conn = BancoDados.conectar();
-		
-		new EnderecoDAO(conn).cadastrar(endereco);
+		try {
+			Connection conn = BancoDados.conectar();
+			
+			new EnderecoDAO(conn).cadastrar(endereco);
+		} finally {
+			BancoDados.desconectar();
+		}		
 	}
 }

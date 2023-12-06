@@ -45,7 +45,6 @@ public class EnderecoDAO {
 
 			BancoDados.finalizarStatement(st);
 			BancoDados.finalizarResultSet(rs);
-			BancoDados.desconectar();
 		}
 	}
 	
@@ -67,7 +66,6 @@ public class EnderecoDAO {
 
 		} finally {
 			BancoDados.finalizarStatement(ps);
-			BancoDados.desconectar();
 		}
 	}
 	
@@ -93,7 +91,6 @@ public class EnderecoDAO {
 		} finally {
 			BancoDados.finalizarResultSet(rs);
 			BancoDados.finalizarStatement(ps);
-			BancoDados.desconectar();
 		}
 	}
 	
@@ -107,7 +104,6 @@ public class EnderecoDAO {
 			return linhasManipuladas;
 		} finally {
 			BancoDados.finalizarStatement(ps);
-			BancoDados.desconectar();
 		}
 	}
 }

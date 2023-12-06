@@ -10,21 +10,34 @@ import dao.EspecialidadeDAO;
 import entities.Especialidade;
 
 public class EspecialidadeService {
+		
 	public List<Especialidade> buscarTodos() throws SQLException, IOException {
+		try {
 		Connection conn = BancoDados.conectar();
 		
 		return new EspecialidadeDAO(conn).buscarTodos();
+		} finally {
+			BancoDados.desconectar();
+		}
 	}
 	
 	public Especialidade buscarPorId(int id) throws SQLException, IOException {
-		Connection conn = BancoDados.conectar();
-		
-		return new EspecialidadeDAO(conn).buscarPorId(id);
+		try {
+			Connection conn = BancoDados.conectar();
+			
+			return new EspecialidadeDAO(conn).buscarPorId(id);
+		} finally {
+			BancoDados.desconectar();
+		}		
 	}
 	
 	public void cadastrar(Especialidade especialidade) throws SQLException, IOException {
-		Connection conn = BancoDados.conectar();
-		
-		new EspecialidadeDAO(conn).cadastrar(especialidade);
+		try {
+			Connection conn = BancoDados.conectar();
+			
+			new EspecialidadeDAO(conn).cadastrar(especialidade);
+		} finally {
+			BancoDados.desconectar();
+		}		
 	}
 }

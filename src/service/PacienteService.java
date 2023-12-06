@@ -12,20 +12,32 @@ import entities.Paciente;
 public class PacienteService {
 	
 	public List<Paciente> buscarTodos() throws SQLException, IOException {
-		Connection conn = BancoDados.conectar();
-	
-		return new PacienteDAO(conn).buscarTodos();
+		try {
+			Connection conn = BancoDados.conectar();
+			
+			return new PacienteDAO(conn).buscarTodos();
+		} finally {
+			BancoDados.desconectar();
+		}
 	}
 	
 	public void editar(Paciente paciente) throws SQLException, IOException {
-		Connection conn = BancoDados.conectar();
-		
-		new PacienteDAO(conn).editar(paciente);
+		try {
+			Connection conn = BancoDados.conectar();
+			
+			new PacienteDAO(conn).editar(paciente);
+		} finally {
+			BancoDados.desconectar();
+		}
 	}
 	
 	public void cadastrar(Paciente paciente) throws SQLException, IOException {
-		Connection conn = BancoDados.conectar();
+		try {
+			Connection conn = BancoDados.conectar();
 		
-		new PacienteDAO(conn).cadastrar(paciente);
+			new PacienteDAO(conn).cadastrar(paciente);
+		} finally {
+			BancoDados.desconectar();
+		}
 	}
 }

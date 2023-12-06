@@ -6,6 +6,7 @@ public class Exame {
 	private String nomeExame;
 	private double custoExame;
 	private String orientacoes;
+	private String codigo;
 	
 	public Exame(int idExame, String nomeExame, double custoExame, String orientacoes) {
 		this.idExame = idExame;
@@ -47,4 +48,13 @@ public class Exame {
 	public void setOrientacoes(String orientacoes) {
 		this.orientacoes = orientacoes;
 	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+	
 }

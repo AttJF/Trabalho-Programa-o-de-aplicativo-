@@ -32,7 +32,6 @@ public class MedicoDAO {
 			ps.executeUpdate();
 		} finally {
 			BancoDados.finalizarStatement(ps);
-			BancoDados.desconectar();
 		}
 	}
 	
@@ -51,7 +50,6 @@ public class MedicoDAO {
 			ps.executeUpdate();
 		} finally {
 			BancoDados.finalizarStatement(ps);
-			BancoDados.desconectar();
 		}
 	}
 	
@@ -66,7 +64,6 @@ public class MedicoDAO {
 
 		} finally {
 			BancoDados.finalizarStatement(ps);
-			BancoDados.desconectar();
 		}
 	}
 	
@@ -98,7 +95,6 @@ public class MedicoDAO {
 
 			BancoDados.finalizarStatement(st);
 			BancoDados.finalizarResultSet(rs);
-			BancoDados.desconectar();
 		}
 	}
 	
@@ -131,7 +127,6 @@ public class MedicoDAO {
 		} finally {
 			BancoDados.finalizarStatement(ps);
 			BancoDados.finalizarResultSet(rs);
-			BancoDados.desconectar();
 		}
 	}
 	
@@ -141,14 +136,14 @@ public class MedicoDAO {
 		List<Medico> listaMedicos = new ArrayList<>();
 		EnderecoDAO enderecoDao = new EnderecoDAO(conn);
 		EspecialidadeDAO especialidadeDAO = new EspecialidadeDAO(conn);
-
+		
 		try {
 			ps = conn.prepareStatement("select * from medico order by nome");
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
 				Medico medico = new Medico();
-
+				
 				medico.setId(rs.getInt("IDmedico"));
 				medico.setNome(rs.getString("nome"));
 				medico.setCRM(rs.getInt("crm"));
@@ -158,12 +153,11 @@ public class MedicoDAO {
 				
 				listaMedicos.add(medico);
 			}
-
+			
 			return listaMedicos;
 		} finally {
 			BancoDados.finalizarStatement(ps);
 			BancoDados.finalizarResultSet(rs);
-			BancoDados.desconectar();
 		}
 	}
 }

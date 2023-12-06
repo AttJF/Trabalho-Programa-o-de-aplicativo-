@@ -45,7 +45,6 @@ public class EspecialidadeDAO {
 
 			BancoDados.finalizarStatement(st);
 			BancoDados.finalizarResultSet(rs);
-			BancoDados.desconectar();
 		}
 	}
 	
@@ -72,7 +71,6 @@ public class EspecialidadeDAO {
 		} finally {
 			BancoDados.finalizarStatement(ps);
 			BancoDados.finalizarResultSet(rs);
-			BancoDados.desconectar();
 		}
 	}
 	
@@ -90,7 +88,6 @@ public class EspecialidadeDAO {
 
 		} finally {
 			BancoDados.finalizarStatement(ps);
-			BancoDados.desconectar();
 		}
 	}
 	
@@ -112,7 +109,6 @@ public class EspecialidadeDAO {
 		} finally {
 			BancoDados.finalizarResultSet(rs);
 			BancoDados.finalizarStatement(ps);
-			BancoDados.desconectar();
 		}
 	}
 	
@@ -127,7 +123,6 @@ public class EspecialidadeDAO {
 		}
 		finally {
 			BancoDados.finalizarStatement(ps);
-			BancoDados.desconectar();
 		}
 	}
 }

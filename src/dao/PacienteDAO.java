@@ -34,7 +34,6 @@ public class PacienteDAO {
 			ps.executeUpdate();
 		} finally {
 			BancoDados.finalizarStatement(ps);
-			BancoDados.desconectar();
 		}
 	}
 	public void editar(Paciente paciente) throws SQLException { 
@@ -53,7 +52,6 @@ public class PacienteDAO {
 			ps.executeUpdate();
 		} finally {
 			BancoDados.finalizarStatement(ps);
-			BancoDados.desconectar();
 		}
 	}
 	
@@ -84,7 +82,6 @@ public class PacienteDAO {
 		} finally {
 			BancoDados.finalizarStatement(st);
 			BancoDados.finalizarResultSet(rs);
-			BancoDados.desconectar();
 		}
 	}
 	
@@ -118,7 +115,6 @@ public class PacienteDAO {
 		} finally {
 			BancoDados.finalizarStatement(ps);
 			BancoDados.finalizarResultSet(rs);
-			BancoDados.desconectar();
 		}
 	}
 	
@@ -150,7 +146,6 @@ public class PacienteDAO {
 		} finally {
 			BancoDados.finalizarStatement(ps);
 			BancoDados.finalizarResultSet(rs);
-			BancoDados.desconectar();
 		}
 	}
 }
