@@ -8,6 +8,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 
 public class Menu extends JFrame {
@@ -30,6 +32,18 @@ public class Menu extends JFrame {
 			}
 		});
 	}
+	
+	private void abrirNovaJanela(JFrame window) {
+        window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        window.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                window.setVisible(false);
+            }
+        });
+
+        window.setVisible(true);
+    }
 
 	/**
 	 * Create the frame.
@@ -53,18 +67,38 @@ public class Menu extends JFrame {
 		panel.setLayout(null);
 		
 		JButton btnNewButton_2 = new JButton("Medico\r\n");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				abrirNovaJanela(new CadastroMedico());
+			}
+		});
 		btnNewButton_2.setBounds(107, 11, 105, 23);
 		panel.add(btnNewButton_2);
 		
 		JButton btnNewButton_1 = new JButton("Paciente\r\n");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				abrirNovaJanela(new CadastroPaciente());
+			}
+		});
 		btnNewButton_1.setBounds(0, 11, 89, 23);
 		panel.add(btnNewButton_1);
 		
 		JButton btnNewButton = new JButton("Especialidade\r\n");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				abrirNovaJanela(new CadastroEspecialidade());
+			}
+		});
 		btnNewButton.setBounds(107, 45, 105, 23);
 		panel.add(btnNewButton);
 		
 		JButton btnNewButton_3 = new JButton("Exame\r\n");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				abrirNovaJanela(new CadastroExame());
+			}
+		});
 		btnNewButton_3.setBounds(0, 45, 89, 23);
 		panel.add(btnNewButton_3);
 		
@@ -78,14 +112,29 @@ public class Menu extends JFrame {
 		panel_1.setLayout(null);
 		
 		JButton btnNewButton_4 = new JButton("Consulta\r\n");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				abrirNovaJanela(new Agendamento());
+			}
+		});
 		btnNewButton_4.setBounds(0, 11, 89, 23);
 		panel_1.add(btnNewButton_4);
 		
 		JButton btnNewButton_5 = new JButton("Exame");
+		btnNewButton_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				abrirNovaJanela(new AgendarExame());
+			}
+		});
 		btnNewButton_5.setBounds(0, 45, 89, 23);
 		panel_1.add(btnNewButton_5);
 		
 		JButton btnNewButton_6 = new JButton("Historico do Paciente");
+		btnNewButton_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				abrirNovaJanela(new HistoricoPaciente());
+			}
+		});
 		btnNewButton_6.setBounds(87, 195, 145, 40);
 		contentPane.add(btnNewButton_6);
 		
@@ -94,12 +143,18 @@ public class Menu extends JFrame {
 		contentPane.add(lblNewLabel_2);
 		
 		JButton btnNewButton_7 = new JButton("Agenda do Medico\r\n");
+		btnNewButton_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				abrirNovaJanela(new AgendaMedico());
+			}
+		});
 		btnNewButton_7.setBounds(179, 144, 129, 40);
 		contentPane.add(btnNewButton_7);
 		
 		JButton btnNewButton_7_1 = new JButton("Agenda do Exame\r\n");
 		btnNewButton_7_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				abrirNovaJanela(new AgendaExame());
 			}
 		});
 		btnNewButton_7_1.setBounds(40, 144, 129, 40);
