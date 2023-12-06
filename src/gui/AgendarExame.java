@@ -132,27 +132,27 @@ public class AgendarExame extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Exame");
-		lblNewLabel_1.setBounds(10, 46, 46, 14);
+		lblNewLabel_1.setBounds(10, 46, 54, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Paciente\r\n");
-		lblNewLabel_2.setBounds(10, 85, 46, 14);
+		lblNewLabel_2.setBounds(10, 85, 54, 14);
 		contentPane.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Data ");
-		lblNewLabel_3.setBounds(10, 181, 46, 14);
+		lblNewLabel_3.setBounds(10, 175, 46, 14);
 		contentPane.add(lblNewLabel_3);
 		
-		JLabel lblNewLabel_4 = new JLabel("Hora\r\n");
-		lblNewLabel_4.setBounds(107, 181, 46, 14);
+		JLabel lblNewLabel_4 = new JLabel("Horário");
+		lblNewLabel_4.setBounds(10, 200, 46, 14);
 		contentPane.add(lblNewLabel_4);
 		
 		txtData = new JFormattedTextField();
-		txtData.setBounds(43, 178, 54, 20);
+		txtData.setBounds(55, 172, 70, 20);
 		contentPane.add(txtData);
 		
 		txtHorario = new JFormattedTextField();
-		txtHorario.setBounds(156, 178, 60, 20);
+		txtHorario.setBounds(55, 197, 70, 20);
 		contentPane.add(txtHorario);
 		
 		JButton btnNewButton = new JButton("Cadastrar");
@@ -161,26 +161,26 @@ public class AgendarExame extends JFrame {
 				agendarNovoExame();
 			}
 		});
-		btnNewButton.setBounds(226, 162, 89, 52);
+		btnNewButton.setBounds(167, 175, 148, 39);
 		contentPane.add(btnNewButton);
 		
 		JLabel lblNewLabel_5 = new JLabel("Medico Requisitando Exame\r\n");
-		lblNewLabel_5.setBounds(10, 110, 170, 14);
+		lblNewLabel_5.setBounds(10, 115, 170, 14);
 		contentPane.add(lblNewLabel_5);
 		
 		cbExames = new JComboBox();
 		cbExames.setModel(new DefaultComboBoxModel(buscarTodosExames()));
-		cbExames.setBounds(58, 42, 257, 22);
+		cbExames.setBounds(66, 42, 249, 22);
 		contentPane.add(cbExames);
 		
 		cbMedicos = new JComboBox();
 		cbMedicos.setModel(new DefaultComboBoxModel(buscarTodosMedicos()));
-		cbMedicos.setBounds(10, 129, 305, 22);
+		cbMedicos.setBounds(10, 135, 305, 22);
 		contentPane.add(cbMedicos);
 		
 		cbPacientes = new JComboBox();
 		cbPacientes.setModel(new DefaultComboBoxModel(buscarTodosPacientes()));
-		cbPacientes.setBounds(58, 81, 257, 22);
+		cbPacientes.setBounds(68, 81, 247, 22);
 		contentPane.add(cbPacientes);
 	}
 }

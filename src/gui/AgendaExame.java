@@ -116,7 +116,7 @@ public class AgendaExame extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Exame");
-		lblNewLabel.setBounds(25, 22, 32, 14);
+		lblNewLabel.setBounds(10, 22, 55, 14);
 		contentPane.add(lblNewLabel);
 		
 		scrollPane = new JScrollPane();

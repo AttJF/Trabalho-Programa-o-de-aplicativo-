@@ -56,7 +56,7 @@ public class CadastroEspecialidade extends JFrame {
 	
 	public CadastroEspecialidade() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 452, 124);
+		setBounds(100, 100, 453, 139);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -64,29 +64,29 @@ public class CadastroEspecialidade extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel_2 = new JLabel("Cadastro Especialidade");
-		lblNewLabel_2.setBounds(20, 10, 126, 14);
+		lblNewLabel_2.setBounds(10, 11, 160, 14);
 		contentPane.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_1 = new JLabel("Codigo");
-		lblNewLabel_1.setBounds(20, 35, 83, 14);
+		JLabel lblNewLabel_1 = new JLabel("Código");
+		lblNewLabel_1.setBounds(10, 41, 83, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		txtCodigo = new JTextField();
-		txtCodigo.setBounds(62, 32, 86, 20);
+		txtCodigo.setBounds(54, 38, 86, 20);
 		contentPane.add(txtCodigo);
 		txtCodigo.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Nome");
-		lblNewLabel.setBounds(158, 35, 46, 14);
+		lblNewLabel.setBounds(179, 40, 46, 14);
 		contentPane.add(lblNewLabel);
 		
 		txtNome = new JTextField();
-		txtNome.setBounds(195, 32, 231, 20);
+		txtNome.setBounds(223, 36, 203, 20);
 		contentPane.add(txtNome);
 		txtNome.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Cadastrar\r\n");
-		btnNewButton.setBounds(20, 60, 406, 23);
+		btnNewButton.setBounds(10, 66, 416, 23);
 		contentPane.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

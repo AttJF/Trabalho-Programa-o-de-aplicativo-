@@ -111,37 +111,37 @@ public class Agendamento extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Medico\r\n");
-		lblNewLabel_1.setBounds(10, 46, 46, 14);
+		lblNewLabel_1.setBounds(10, 46, 54, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Paciente\r\n");
-		lblNewLabel_2.setBounds(10, 85, 46, 14);
+		lblNewLabel_2.setBounds(10, 85, 54, 14);
 		contentPane.add(lblNewLabel_2);
 		
 		cbMedicos = new JComboBox();
 		cbMedicos.setModel(new DefaultComboBoxModel(buscarTodosMedicos()));
-		cbMedicos.setBounds(54, 43, 257, 20);
+		cbMedicos.setBounds(66, 43, 255, 20);
 		contentPane.add(cbMedicos);
 		
 		cbPacientes = new JComboBox();
 		cbPacientes.setModel(new DefaultComboBoxModel(buscarTodosPacientes()));
-		cbPacientes.setBounds(54, 82, 257, 20);
+		cbPacientes.setBounds(66, 82, 255, 20);
 		contentPane.add(cbPacientes);
 		
 		JLabel lblNewLabel_3 = new JLabel("Data ");
 		lblNewLabel_3.setBounds(10, 128, 46, 14);
 		contentPane.add(lblNewLabel_3);
 		
-		JLabel lblNewLabel_4 = new JLabel("Hora\r\n");
-		lblNewLabel_4.setBounds(113, 128, 46, 14);
+		JLabel lblNewLabel_4 = new JLabel("Horário");
+		lblNewLabel_4.setBounds(10, 151, 46, 14);
 		contentPane.add(lblNewLabel_4);
 		
 		txtData = new JFormattedTextField();
-		txtData.setBounds(39, 125, 54, 20);
+		txtData.setBounds(59, 125, 65, 20);
 		contentPane.add(txtData);
 		
 		txtHorario = new JFormattedTextField();
-		txtHorario.setBounds(144, 125, 60, 20);
+		txtHorario.setBounds(59, 148, 65, 20);
 		contentPane.add(txtHorario);
 		
 		JButton btnNewButton = new JButton("Cadastrar");
@@ -150,7 +150,7 @@ public class Agendamento extends JFrame {
 				agendarConsulta();
 			}
 		});
-		btnNewButton.setBounds(225, 113, 89, 52);
+		btnNewButton.setBounds(147, 128, 174, 37);
 		contentPane.add(btnNewButton);
 	}
 

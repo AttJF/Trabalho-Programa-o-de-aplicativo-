@@ -123,7 +123,7 @@ public class CadastroMedico extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		lblNewLabel = new JLabel("Nome :");
+		lblNewLabel = new JLabel("Nome");
 		lblNewLabel.setBounds(10, 50, 46, 14);
 		contentPane.add(lblNewLabel);
 		
@@ -132,7 +132,7 @@ public class CadastroMedico extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		txtNome = new JTextField();
-		txtNome.setBounds(49, 47, 404, 20);
+		txtNome.setBounds(68, 47, 396, 20);
 		contentPane.add(txtNome);
 		txtNome.setColumns(10);
 		
@@ -145,12 +145,12 @@ public class CadastroMedico extends JFrame {
 		btnNewButton.setBounds(168, 387, 130, 51);
 		contentPane.add(btnNewButton);
 		
-		JLabel lblNewLabel_4 = new JLabel("Telefone :");
+		JLabel lblNewLabel_4 = new JLabel("Telefone");
 		lblNewLabel_4.setBounds(10, 81, 60, 14);
 		contentPane.add(lblNewLabel_4);
 		
 		txtTelefone = new JFormattedTextField();
-		txtTelefone.setBounds(68, 78, 385, 20);
+		txtTelefone.setBounds(68, 78, 396, 20);
 		contentPane.add(txtTelefone);
 		
 		JSeparator separator_1 = new JSeparator();
@@ -158,11 +158,11 @@ public class CadastroMedico extends JFrame {
 		contentPane.add(separator_1);
 		
 		JLabel lblNewLabel_5 = new JLabel("Registro do Conselho Federal de Medicina");
-		lblNewLabel_5.setBounds(10, 316, 204, 14);
+		lblNewLabel_5.setBounds(10, 316, 240, 14);
 		contentPane.add(lblNewLabel_5);
 		
 		txtCrm = new JTextField();
-		txtCrm.setBounds(223, 316, 241, 20);
+		txtCrm.setBounds(260, 316, 204, 20);
 		contentPane.add(txtCrm);
 		txtCrm.setColumns(10);
 		
@@ -183,12 +183,12 @@ public class CadastroMedico extends JFrame {
 		contentPane.add(lblNewLabel_9);
 		
 		txtUf = new JTextField();
-		txtUf.setBounds(112, 142, 42, 20);
+		txtUf.setBounds(120, 142, 42, 20);
 		contentPane.add(txtUf);
 		txtUf.setColumns(10);
 		
 		txtCidade = new JTextField();
-		txtCidade.setBounds(206, 142, 149, 20);
+		txtCidade.setBounds(210, 142, 149, 20);
 		contentPane.add(txtCidade);
 		txtCidade.setColumns(10);
 		
@@ -197,7 +197,7 @@ public class CadastroMedico extends JFrame {
 		contentPane.add(separator_2);
 		
 		JSeparator separator_3 = new JSeparator();
-		separator_3.setBounds(20, 109, 454, 2);
+		separator_3.setBounds(20, 107, 444, 4);
 		contentPane.add(separator_3);
 		
 		JLabel lblNewLabel_10 = new JLabel("Rua\r\n");
@@ -205,7 +205,7 @@ public class CadastroMedico extends JFrame {
 		contentPane.add(lblNewLabel_10);
 		
 		txtRua = new JTextField();
-		txtRua.setBounds(49, 200, 415, 20);
+		txtRua.setBounds(68, 200, 396, 20);
 		contentPane.add(txtRua);
 		txtRua.setColumns(10);
 		
@@ -214,7 +214,7 @@ public class CadastroMedico extends JFrame {
 		contentPane.add(lblNewLabel_11);
 		
 		txtBairro = new JTextField();
-		txtBairro.setBounds(48, 170, 416, 20);
+		txtBairro.setBounds(68, 170, 396, 20);
 		contentPane.add(txtBairro);
 		txtBairro.setColumns(10);
 		

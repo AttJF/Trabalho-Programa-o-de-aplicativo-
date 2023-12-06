@@ -34,15 +34,8 @@ public class CadastroPaciente extends JFrame {
 	private JPanel contentPane;
 	private JLabel lblNewLabel;
 	private JTextField txtNome;
-	/**
-	 * @wbp.nonvisual location=-40,359
-	 */
-	private JTextField textField_1;
-	private JTextField textField_2;
 	private JTextField txtUf;
-	private JTextField textField_3;
 	private JTextField txtCidade;
-	private JTextField textField_4;
 	private JTextField txtRua;
 	private JTextField txtBairro;
 	private JTextField txtNumero;
@@ -129,15 +122,15 @@ public class CadastroPaciente extends JFrame {
 	 */
 	public CadastroPaciente() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 490, 397);
+		setBounds(100, 100, 495, 480);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		lblNewLabel = new JLabel("Nome :");
-		lblNewLabel.setBounds(10, 28, 46, 14);
+		lblNewLabel = new JLabel("Nome");
+		lblNewLabel.setBounds(10, 31, 46, 14);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Cadastro de Paciente");
@@ -145,12 +138,12 @@ public class CadastroPaciente extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		txtNome = new JTextField();
-		txtNome.setBounds(49, 28, 406, 20);
+		txtNome.setBounds(66, 28, 389, 20);
 		contentPane.add(txtNome);
 		txtNome.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Data de nascimento");
-		lblNewLabel_2.setBounds(152, 96, 116, 14);
+		lblNewLabel_2.setBounds(139, 96, 116, 14);
 		contentPane.add(lblNewLabel_2);
 		
 		diaNascimento = new JSpinner();
@@ -183,7 +176,7 @@ public class CadastroPaciente extends JFrame {
 		panel.add(rbOutro);
 		
 		JLabel lblNewLabel_3 = new JLabel("Sexo");
-		lblNewLabel_3.setBounds(45, 0, 24, 14);
+		lblNewLabel_3.setBounds(36, 2, 40, 14);
 		panel.add(lblNewLabel_3);
 		
 		JButton btnNewButton = new JButton("Cadastrar");
@@ -192,25 +185,20 @@ public class CadastroPaciente extends JFrame {
 				cadastrarPaciente();
 			}
 		});
-		btnNewButton.setBounds(347, 130, 108, 51);
+		btnNewButton.setBounds(186, 379, 108, 51);
 		contentPane.add(btnNewButton);
 		
 		JLabel lblNewLabel_4 = new JLabel("Telefone");
-		lblNewLabel_4.setBounds(152, 133, 46, 14);
+		lblNewLabel_4.setBounds(139, 133, 71, 14);
 		contentPane.add(lblNewLabel_4);
 		
 		txtTelefone = new JFormattedTextField();
-		txtTelefone.setBounds(208, 130, 121, 20);
+		txtTelefone.setBounds(196, 130, 259, 20);
 		contentPane.add(txtTelefone);
 		
 		JButton btnNewButton_1 = new JButton("Carregar photo");
-		btnNewButton_1.setBounds(152, 158, 185, 23);
+		btnNewButton_1.setBounds(139, 158, 316, 23);
 		contentPane.add(btnNewButton_1);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(224, 375, 144, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
 		
 		JLabel lblNewLabel_6 = new JLabel("Endereço\r\n:");
 		lblNewLabel_6.setBounds(10, 207, 71, 14);
@@ -229,12 +217,12 @@ public class CadastroPaciente extends JFrame {
 		contentPane.add(lblNewLabel_9);
 		
 		txtUf = new JTextField();
-		txtUf.setBounds(112, 229, 46, 20);
+		txtUf.setBounds(118, 229, 46, 20);
 		contentPane.add(txtUf);
 		txtUf.setColumns(10);
 		
 		txtCidade = new JTextField();
-		txtCidade.setBounds(208, 229, 149, 20);
+		txtCidade.setBounds(209, 229, 149, 20);
 		contentPane.add(txtCidade);
 		txtCidade.setColumns(10);
 		
@@ -247,20 +235,20 @@ public class CadastroPaciente extends JFrame {
 		contentPane.add(separator_3);
 		
 		JLabel lblNewLabel_10 = new JLabel("Rua\r\n");
-		lblNewLabel_10.setBounds(266, 260, 46, 14);
+		lblNewLabel_10.setBounds(270, 263, 46, 14);
 		contentPane.add(lblNewLabel_10);
 		
 		txtRua = new JTextField();
-		txtRua.setBounds(299, 257, 165, 20);
+		txtRua.setBounds(299, 260, 165, 20);
 		contentPane.add(txtRua);
 		txtRua.setColumns(10);
 		
 		JLabel lblNewLabel_11 = new JLabel("Bairro");
-		lblNewLabel_11.setBounds(10, 263, 46, 14);
+		lblNewLabel_11.setBounds(10, 263, 51, 14);
 		contentPane.add(lblNewLabel_11);
 		
 		txtBairro = new JTextField();
-		txtBairro.setBounds(40, 257, 216, 20);
+		txtBairro.setBounds(52, 260, 203, 20);
 		contentPane.add(txtBairro);
 		txtBairro.setColumns(10);
 		
@@ -274,40 +262,24 @@ public class CadastroPaciente extends JFrame {
 		txtNumero.setColumns(10);
 		
 		JLabel lblNewLabel_13 = new JLabel("Complemento\r\n");
-		lblNewLabel_13.setBounds(10, 302, 71, 14);
+		lblNewLabel_13.setBounds(10, 302, 93, 14);
 		contentPane.add(lblNewLabel_13);
 		
 		txtComplemento = new JEditorPane();
-		txtComplemento.setBounds(91, 288, 362, 51);
+		txtComplemento.setBounds(110, 288, 354, 51);
 		contentPane.add(txtComplemento);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(66, 257, 190, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
-		
-		textField_2 = new JTextField();
-		textField_2.setBounds(294, 257, 161, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
-		
-		textField_3 = new JTextField();
-		textField_3.setBounds(406, 229, 49, 20);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
-		
-		textField_4 = new JTextField();
-		textField_4.setBounds(208, 229, 151, 20);
-		contentPane.add(textField_4);
-		textField_4.setColumns(10);
-		
 		JLabel lblNewLabel_5 = new JLabel("Forma de Pagamento");
-		lblNewLabel_5.setBounds(10, 57, 119, 14);
+		lblNewLabel_5.setBounds(10, 57, 148, 14);
 		contentPane.add(lblNewLabel_5);
 		
 		cbFormasPagamento = new JComboBox();
 		cbFormasPagamento.setModel(new DefaultComboBoxModel(formasDePagamento()));
-		cbFormasPagamento.setBounds(149, 55, 306, 22);
+		cbFormasPagamento.setBounds(142, 55, 313, 22);
 		contentPane.add(cbFormasPagamento);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(10, 350, 457, 2);
+		contentPane.add(separator);
 	}
 }

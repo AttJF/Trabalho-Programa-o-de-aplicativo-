@@ -119,7 +119,7 @@ public class AgendaMedico extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Médico\r\n");
-		lblNewLabel.setBounds(25, 22, 112, 14);
+		lblNewLabel.setBounds(10, 22, 58, 14);
 		contentPane.add(lblNewLabel);
 		
 		cbMedicos = new JComboBox();

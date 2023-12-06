@@ -83,20 +83,20 @@ public class CadastroExame extends JFrame {
 		lblNewLabel_1.setBounds(10, 36, 46, 14);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Codigo\r\n");
+		JLabel lblNewLabel_2 = new JLabel("Código\r\n");
 		lblNewLabel_2.setBounds(10, 61, 46, 14);
 		contentPane.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_3 = new JLabel("Valor R$:\r\n");
-		lblNewLabel_3.setBounds(231, 61, 46, 14);
+		JLabel lblNewLabel_3 = new JLabel("Valor R$");
+		lblNewLabel_3.setBounds(215, 61, 65, 14);
 		contentPane.add(lblNewLabel_3);
 		
-		JLabel lblNewLabel_4 = new JLabel("Orientações:\r\n\r\n");
-		lblNewLabel_4.setBounds(10, 86, 89, 14);
+		JLabel lblNewLabel_4 = new JLabel("Orientações");
+		lblNewLabel_4.setBounds(10, 86, 97, 14);
 		contentPane.add(lblNewLabel_4);
 		
 		txtOrientacoes = new JTextPane();
-		txtOrientacoes.setBounds(84, 86, 276, 103);
+		txtOrientacoes.setBounds(91, 86, 281, 103);
 		contentPane.add(txtOrientacoes);
 		
 		txtCodigo = new JTextField();
@@ -105,12 +105,12 @@ public class CadastroExame extends JFrame {
 		txtCodigo.setColumns(10);
 		
 		txtNome = new JTextField();
-		txtNome.setBounds(56, 33, 304, 20);
+		txtNome.setBounds(56, 33, 316, 20);
 		contentPane.add(txtNome);
 		txtNome.setColumns(10);
 		
 		txtValor = new JTextField();
-		txtValor.setBounds(287, 58, 73, 20);
+		txtValor.setBounds(274, 58, 98, 20);
 		contentPane.add(txtValor);
 		txtValor.setColumns(10);
 		

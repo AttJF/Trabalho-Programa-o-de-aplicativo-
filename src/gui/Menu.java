@@ -50,7 +50,7 @@ public class Menu extends JFrame {
 	 */
 	public Menu() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 350, 294);
+		setBounds(100, 100, 426, 329);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -58,11 +58,11 @@ public class Menu extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Cadastrar\r\n");
-		lblNewLabel.setBounds(87, 11, 123, 14);
+		lblNewLabel.setBounds(110, 11, 123, 14);
 		contentPane.add(lblNewLabel);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 30, 212, 78);
+		panel.setBounds(10, 30, 244, 88);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -72,7 +72,7 @@ public class Menu extends JFrame {
 				abrirNovaJanela(new CadastroMedico());
 			}
 		});
-		btnNewButton_2.setBounds(107, 11, 105, 23);
+		btnNewButton_2.setBounds(129, 11, 115, 23);
 		panel.add(btnNewButton_2);
 		
 		JButton btnNewButton_1 = new JButton("Paciente\r\n");
@@ -81,7 +81,7 @@ public class Menu extends JFrame {
 				abrirNovaJanela(new CadastroPaciente());
 			}
 		});
-		btnNewButton_1.setBounds(0, 11, 89, 23);
+		btnNewButton_1.setBounds(8, 11, 115, 23);
 		panel.add(btnNewButton_1);
 		
 		JButton btnNewButton = new JButton("Especialidade\r\n");
@@ -90,7 +90,7 @@ public class Menu extends JFrame {
 				abrirNovaJanela(new CadastroEspecialidade());
 			}
 		});
-		btnNewButton.setBounds(107, 45, 105, 23);
+		btnNewButton.setBounds(129, 54, 115, 23);
 		panel.add(btnNewButton);
 		
 		JButton btnNewButton_3 = new JButton("Exame\r\n");
@@ -99,15 +99,15 @@ public class Menu extends JFrame {
 				abrirNovaJanela(new CadastroExame());
 			}
 		});
-		btnNewButton_3.setBounds(0, 45, 89, 23);
+		btnNewButton_3.setBounds(8, 54, 115, 23);
 		panel.add(btnNewButton_3);
 		
 		JLabel lblNewLabel_1 = new JLabel("Agendar\r\n");
-		lblNewLabel_1.setBounds(255, 11, 46, 14);
+		lblNewLabel_1.setBounds(322, 11, 72, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(232, 30, 89, 78);
+		panel_1.setBounds(288, 30, 112, 88);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -117,7 +117,7 @@ public class Menu extends JFrame {
 				abrirNovaJanela(new Agendamento());
 			}
 		});
-		btnNewButton_4.setBounds(0, 11, 89, 23);
+		btnNewButton_4.setBounds(10, 11, 89, 23);
 		panel_1.add(btnNewButton_4);
 		
 		JButton btnNewButton_5 = new JButton("Exame");
@@ -126,43 +126,43 @@ public class Menu extends JFrame {
 				abrirNovaJanela(new AgendarExame());
 			}
 		});
-		btnNewButton_5.setBounds(0, 45, 89, 23);
+		btnNewButton_5.setBounds(10, 54, 89, 23);
 		panel_1.add(btnNewButton_5);
 		
+		JLabel lblNewLabel_2 = new JLabel("Consultar");
+		lblNewLabel_2.setBounds(179, 142, 65, 14);
+		contentPane.add(lblNewLabel_2);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBounds(10, 156, 390, 120);
+		contentPane.add(panel_2);
+		panel_2.setLayout(null);
+		
+		JButton btnNewButton_7_1 = new JButton("Agenda do Exame\r\n");
+		btnNewButton_7_1.setBounds(25, 11, 155, 40);
+		panel_2.add(btnNewButton_7_1);
+		
+		JButton btnNewButton_7 = new JButton("Agenda do Medico\r\n");
+		btnNewButton_7.setBounds(206, 11, 155, 40);
+		panel_2.add(btnNewButton_7);
+		
 		JButton btnNewButton_6 = new JButton("Historico do Paciente");
+		btnNewButton_6.setBounds(120, 62, 155, 40);
+		panel_2.add(btnNewButton_6);
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				abrirNovaJanela(new HistoricoPaciente());
 			}
 		});
-		btnNewButton_6.setBounds(87, 195, 145, 40);
-		contentPane.add(btnNewButton_6);
-		
-		JLabel lblNewLabel_2 = new JLabel("Consultar");
-		lblNewLabel_2.setBounds(143, 119, 46, 14);
-		contentPane.add(lblNewLabel_2);
-		
-		JButton btnNewButton_7 = new JButton("Agenda do Medico\r\n");
 		btnNewButton_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				abrirNovaJanela(new AgendaMedico());
 			}
 		});
-		btnNewButton_7.setBounds(179, 144, 129, 40);
-		contentPane.add(btnNewButton_7);
-		
-		JButton btnNewButton_7_1 = new JButton("Agenda do Exame\r\n");
 		btnNewButton_7_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				abrirNovaJanela(new AgendaExame());
 			}
 		});
-		btnNewButton_7_1.setBounds(40, 144, 129, 40);
-		contentPane.add(btnNewButton_7_1);
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(10, 133, 311, 120);
-		contentPane.add(panel_2);
-		panel_2.setLayout(null);
 	}
 }
