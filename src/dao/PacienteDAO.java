@@ -22,7 +22,7 @@ public class PacienteDAO {
 		PreparedStatement ps = null;
 
 		try {
-			ps = conn.prepareStatement("insert into paciente (nome, datanascimento, sexo, telefone, formapagamento, IDendereco, imagem) values (?, ?, ?, ?, ?, ?)");
+			ps = conn.prepareStatement("insert into paciente (nome, datanascimento, sexo, telefone, formapagamento, IDendereco, imagem) values (?, ?, ?, ?, ?, ?, ?)");
 
 			ps.setString(1, paciente.getNome());
 			ps.setString(2, paciente.getDataNascimento());
