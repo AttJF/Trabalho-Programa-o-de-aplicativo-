@@ -124,6 +124,7 @@ public class CadastroPaciente extends JFrame {
 			paciente.setNome(this.txtNome.getText());
 			paciente.setSexo(verificarSelecaoRadioButtonSexo());
 			paciente.setTelefone(this.txtTelefone.getText());
+			paciente.setFoto(imagemEmBytes);
 			
 			this.pacienteService.cadastrar(paciente);
 			System.out.println(paciente);
