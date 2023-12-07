@@ -8,8 +8,10 @@ import java.util.List;
 import dao.BancoDados;
 import dao.EspecialidadeDAO;
 import entities.Especialidade;
+import utils.Validacao;
 
 public class EspecialidadeService {
+	Validacao validacao = new Validacao();
 		
 	public List<Especialidade> buscarTodos() throws SQLException, IOException {
 		try {
@@ -31,7 +33,7 @@ public class EspecialidadeService {
 		}		
 	}
 	
-	public void cadastrar(Especialidade especialidade) throws SQLException, IOException {
+	public void cadastrar(Especialidade especialidade) throws SQLException, IOException, Exception {
 		try {
 			Connection conn = BancoDados.conectar();
 			

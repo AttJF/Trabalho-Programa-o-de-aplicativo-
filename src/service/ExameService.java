@@ -6,16 +6,21 @@ import java.sql.SQLException;
 import java.util.List;
 
 import dao.BancoDados;
-import dao.EspecialidadeDAO;
 import dao.ExameDAO;
-import entities.Especialidade;
 import entities.Exame;
-import entities.Paciente;
+import utils.Validacao;
 
 public class ExameService {
-	public void cadastrar(Exame exame) throws SQLException, IOException {
+	Validacao validacao = new Validacao();
+	
+	public void cadastrar(Exame exame) throws SQLException, IOException, Exception {
 		try {
 			Connection conn = BancoDados.conectar();
+			
+			validacao.verificaNaoVazio(exame.getNomeExame());
+			validacao.verificaNaoVazio(exame.getOrientacoes());
+			validacao.verificaPositivo(exame.getCustoExame());
+			validacao.verificaNaoVazio(exame.getCodigo());
 			
 			new ExameDAO(conn).cadastrar(exame);
 		} finally {
@@ -23,7 +28,7 @@ public class ExameService {
 		}
 	}
 	
-	public List<Exame> buscarTodos() throws SQLException, IOException {
+	public List<Exame> buscarTodos() throws SQLException, IOException, Exception {
 		try {
 			Connection conn = BancoDados.conectar();
 			
