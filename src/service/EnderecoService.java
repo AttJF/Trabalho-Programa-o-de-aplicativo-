@@ -13,6 +13,12 @@ public class EnderecoService {
 		try {
 			Connection conn = BancoDados.conectar();
 			
+			 validacao.verificaNaoVazio(endereco.getCidade());
+			 validacao.verificaNaoVazio(endereco.getNumero());
+			 validacao.verificaNaoVazio(endereco.getComplemento());
+			 validacao.verificaNaoVazio(endereco.getUniaoFederativa());
+			 validacao.verificaNaoVazio(endereco.getBairro());
+			 validacao.verificaNaoVazio(endereco.getRua());
 			new EnderecoDAO(conn).cadastrar(endereco);
 		} finally {
 			BancoDados.desconectar();
