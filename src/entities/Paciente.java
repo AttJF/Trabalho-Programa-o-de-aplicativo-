@@ -5,9 +5,9 @@ public class Paciente {
 	private String nome, dataNascimento, sexo, telefone;
 	private FormaDePagamento formaPagamento;
 	private Endereco endereco;
-	// foto
+	private byte[] foto;
 	
-	public Paciente(int id, String nome, String dataNascimento, String sexo, String telefone, FormaDePagamento formaPagamento, Endereco endereco) {
+	public Paciente(int id, String nome, String dataNascimento, String sexo, String telefone, FormaDePagamento formaPagamento, Endereco endereco, byte[] foto) {
 		this.id = id;
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;
@@ -15,6 +15,7 @@ public class Paciente {
 		this.telefone = telefone;
 		this.formaPagamento = formaPagamento;
 		this.endereco = endereco;
+		this.foto = foto;
 	}
 	
 	public Paciente() { }
@@ -73,6 +74,14 @@ public class Paciente {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+
+	public byte[] getFoto() {
+		return foto;
+	}
+
+	public void setFoto(byte[] foto) {
+		this.foto = foto;
 	}
 
 	@Override

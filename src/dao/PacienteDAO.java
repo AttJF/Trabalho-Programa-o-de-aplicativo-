@@ -22,7 +22,7 @@ public class PacienteDAO {
 		PreparedStatement ps = null;
 
 		try {
-			ps = conn.prepareStatement("insert into paciente (nome, datanascimento, sexo, telefone, formapagamento, IDendereco) values (?, ?, ?, ?, ?, ?)");
+			ps = conn.prepareStatement("insert into paciente (nome, datanascimento, sexo, telefone, formapagamento, IDendereco, imagem) values (?, ?, ?, ?, ?, ?)");
 
 			ps.setString(1, paciente.getNome());
 			ps.setString(2, paciente.getDataNascimento());
@@ -30,6 +30,7 @@ public class PacienteDAO {
 			ps.setString(4, paciente.getTelefone());
 			ps.setString(5, paciente.getFormaPagamento().toString());
 			ps.setInt(6, paciente.getEndereco().getId());
+			ps.setBytes(7, paciente.getFoto());
 
 			ps.executeUpdate();
 		} finally {
@@ -40,14 +41,15 @@ public class PacienteDAO {
 		PreparedStatement ps = null;
 
 		try {
-			ps = conn.prepareStatement("update paciente set nome = ?, datanascimento = ?, sexo = ?, telefone = ?, formapagamento = ?, IDendereco = ? where IDpaciente = ?");
+			ps = conn.prepareStatement("update paciente set nome = ?, datanascimento = ?, sexo = ?, telefone = ?, formapagamento = ?, IDendereco = ?, imagem = ? where IDpaciente = ?");
 			ps.setString(1, paciente.getNome());
 			ps.setString(2, paciente.getDataNascimento());
 			ps.setString(3, paciente.getSexo());
 			ps.setString(4, paciente.getTelefone());
 			ps.setString(5, paciente.getFormaPagamento().toString());
 			ps.setInt(6, paciente.getEndereco().getId());
-			ps.setInt(7, paciente.getId());
+			ps.setBytes(7, paciente.getFoto());
+			ps.setInt(8, paciente.getId());
 
 			ps.executeUpdate();
 		} finally {
@@ -74,6 +76,7 @@ public class PacienteDAO {
 				paciente.setTelefone(rs.getString("telefone"));
 				paciente.setFormaPagamento(FormaDePagamento.valueOf(rs.getString("formapagamento")));
 				paciente.setEndereco(enderecoDao.buscarPorId(rs.getInt("IDendereco")));
+				paciente.setFoto(rs.getBytes("imagem"));
 				
 				return paciente;
 			}
@@ -107,6 +110,7 @@ public class PacienteDAO {
 				paciente.setTelefone(rs.getString("telefone"));
 				paciente.setFormaPagamento(FormaDePagamento.valueOf(rs.getString("formapagamento")));
 				paciente.setEndereco(enderecoDao.buscarPorId(rs.getInt("IDendereco")));
+				paciente.setFoto(rs.getBytes("imagem"));
 				
 				listaPacientes.add(paciente);
 			}
@@ -138,6 +142,7 @@ public class PacienteDAO {
 				paciente.setTelefone(rs.getString("telefone"));
 				paciente.setFormaPagamento(FormaDePagamento.valueOf(rs.getString("formapagamento")));
 				paciente.setEndereco(enderecoDao.buscarPorId(rs.getInt("IDendereco")));
+				paciente.setFoto(rs.getBytes("imagem"));
 				
 				listaPacientes.add(paciente);
 			}

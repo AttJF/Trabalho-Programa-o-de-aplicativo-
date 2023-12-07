@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import entities.Endereco;
 import entities.FormaDePagamento;
@@ -20,8 +21,11 @@ import javax.swing.JSeparator;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JEditorPane;
+import javax.swing.JFileChooser;
 
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.Arrays;
 import java.awt.event.ActionEvent;
 import javax.swing.JFormattedTextField;
@@ -55,6 +59,7 @@ public class CadastroPaciente extends JFrame {
 	
 	PacienteService pacienteService = new PacienteService();
 	EnderecoService enderecoService = new EnderecoService();
+	byte[] imagemEmBytes;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -67,6 +72,29 @@ public class CadastroPaciente extends JFrame {
 				}
 			}
 		});
+	}
+	
+	private void buscarFoto() {
+		JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Escolher Foto");
+        fileChooser.setFileFilter(new FileNameExtensionFilter("Imagens", "jpg", "jpeg", "png", "gif"));
+
+        int resultado = fileChooser.showOpenDialog(this);
+
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+            File arquivoSelecionado = fileChooser.getSelectedFile();
+
+            try (FileInputStream fis = new FileInputStream(arquivoSelecionado)) {
+            	imagemEmBytes = new byte[(int) arquivoSelecionado.length()];
+                fis.read(imagemEmBytes);
+
+                System.out.println("Tamanho da imagem em bytes: " + imagemEmBytes.length);
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Erro ao processar Imagem", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+		
 	}
 	
 	private String[] formasDePagamento() {
@@ -196,9 +224,14 @@ public class CadastroPaciente extends JFrame {
 		txtTelefone.setBounds(196, 130, 259, 20);
 		contentPane.add(txtTelefone);
 		
-		JButton btnNewButton_1 = new JButton("Carregar photo");
-		btnNewButton_1.setBounds(139, 158, 316, 23);
-		contentPane.add(btnNewButton_1);
+		JButton btnFoto = new JButton("Carregar photo");
+		btnFoto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				buscarFoto();
+			}
+		});
+		btnFoto.setBounds(139, 158, 316, 23);
+		contentPane.add(btnFoto);
 		
 		JLabel lblNewLabel_6 = new JLabel("Endereço\r\n:");
 		lblNewLabel_6.setBounds(10, 207, 71, 14);
